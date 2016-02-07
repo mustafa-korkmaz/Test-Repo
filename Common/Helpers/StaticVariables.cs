@@ -22,16 +22,16 @@ namespace Common.Helpers
                 new Breadcrumb(){Id=5,ParentId=1,ControllerName="debtor",ActionName="invoice",ViewTitle="Fatura Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=6,ParentId=1,ControllerName="debtor",ActionName="agreement",ViewTitle="Mutabakat Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=7,ParentId=1,ControllerName="debtor",ActionName="limit",ViewTitle="Yetkili Satıcı Limit Bilgileri", BackButtonText=""},
-                new Breadcrumb(){Id=8,ParentId=0,ControllerName="",ActionName="",ViewTitle="Müşteri İşlemleri", BackButtonText=""},
+                new Breadcrumb(){Id=8,ParentId=0,ControllerName="",ActionName="",ViewTitle="Alacaklı İşlemleri", BackButtonText=""},
                 new Breadcrumb(){Id=2,ParentId=8,ControllerName="creditor",ActionName="DebtorDebt",ViewTitle="Borçlu Borç Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=3,ParentId=8,ControllerName="creditor",ActionName="DebtorLimitRisk",ViewTitle="Borçlu Limit Risk Bilgileri", BackButtonText=""},
-                new Breadcrumb(){Id=9,ParentId=8,ControllerName="creditor",ActionName="receivable",ViewTitle="Alacak Bilgileri", BackButtonText=""},                
+                new Breadcrumb(){Id=9,ParentId=8,ControllerName="creditor",ActionName="receivable",ViewTitle="Alacak Bilgileri", BackButtonText=""},               
                 new Breadcrumb(){Id=10,ParentId=8,ControllerName="creditor",ActionName="payment",ViewTitle="Ödeme Tutar Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=11,ParentId=8,ControllerName="creditor",ActionName="invoice",ViewTitle="Fatura Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=12,ParentId=8,ControllerName="creditor",ActionName="agreement",ViewTitle="Mutabakat Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=13,ParentId=8,ControllerName="creditor",ActionName="sample",ViewTitle="Sample Page", BackButtonText=""},
                 new Breadcrumb(){Id=14,ParentId=8,ControllerName="",ActionName="",ViewTitle="Ön Ödeme", BackButtonText=""},
-                new Breadcrumb(){Id=15,ParentId=14,ControllerName="prefinance",ActionName="prefinance",ViewTitle="Ön Ödeme Blgileri", BackButtonText=""},
+                new Breadcrumb(){Id=15,ParentId=14,ControllerName="prefinance",ActionName="prefinanceInfo",ViewTitle="Ön Ödeme Blgileri", BackButtonText=""},
                 new Breadcrumb(){Id=16,ParentId=14,ControllerName="prefinance",ActionName="prefinanceEntry",ViewTitle="Ön Ödeme Giriş", BackButtonText=""},
                 new Breadcrumb(){Id=17,ParentId=0,ControllerName="",ActionName="",ViewTitle="Diğer", BackButtonText=""},
                 new Breadcrumb(){Id=18,ParentId=17,ControllerName="Other",ActionName="stocks",ViewTitle="Stok İzle", BackButtonText=""},
@@ -42,9 +42,11 @@ namespace Common.Helpers
                 new Breadcrumb(){Id=23,ParentId=0,ControllerName="",ActionName="",ViewTitle="Rehin İşlemleri", BackButtonText=""},
                 new Breadcrumb(){Id=24,ParentId=23,ControllerName="tradeVehicle",ActionName="tradeVehicleList",ViewTitle="Takas Araç Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=25,ParentId=23,ControllerName="tradeVehicle",ActionName="pledgedVehicleList",ViewTitle="Rehin Araç Bilgileri", BackButtonText=""},
-                new Breadcrumb(){Id=26,ParentId=0,ControllerName="",ActionName="",ViewTitle="Tests", BackButtonText=""},
-                new Breadcrumb(){Id=27,ParentId=26,ControllerName="home",ActionName="page1",ViewTitle="Page1", BackButtonText=""},
-                new Breadcrumb(){Id=28,ParentId=26,ControllerName="home",ActionName="page2",ViewTitle="Page2", BackButtonText=""}
+                new Breadcrumb(){Id=26,ParentId=0,ControllerName="",ActionName="",ViewTitle="Test İşlemleri", BackButtonText=""},
+                new Breadcrumb(){Id=27,ParentId=26,ControllerName="Test",ActionName="Pjax1",ViewTitle="Pjax1", BackButtonText=""},
+                new Breadcrumb(){Id=28,ParentId=26,ControllerName="Test",ActionName="Pjax2",ViewTitle="Pjax2", BackButtonText=""},
+                new Breadcrumb(){Id=29,ParentId=26,ControllerName="home",ActionName="page1",ViewTitle="Page1", BackButtonText=""},
+                new Breadcrumb(){Id=30,ParentId=26,ControllerName="home",ActionName="page2",ViewTitle="Page2", BackButtonText=""}
                 };
             }
         }

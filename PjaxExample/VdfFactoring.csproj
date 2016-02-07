@@ -163,7 +163,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CreditorController.cs" />
+    <Compile Include="Controllers\DebtorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OtherController.cs" />
+    <Compile Include="Controllers\PrefinanceController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TradeVehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -5941,6 +5947,26 @@
     <Content Include="Views\Home\Page3.cshtml" />
     <Content Include="Views\Shared\_MetronicLayout.cshtml" />
     <Content Include="Views\Shared\_Breadcrumbs.cshtml" />
+    <Content Include="Views\Test\Pjax1.cshtml" />
+    <Content Include="Views\Test\Pjax2.cshtml" />
+    <Content Include="Views\TradeVehicle\TradeVehicleList.cshtml" />
+    <Content Include="Views\TradeVehicle\PledgedVehicleList.cshtml" />
+    <Content Include="Views\Debtor\Agreement.cshtml" />
+    <Content Include="Views\Debtor\Invoice.cshtml" />
+    <Content Include="Views\Debtor\Limit.cshtml" />
+    <Content Include="Views\Debtor\Debt.cshtml" />
+    <Content Include="Views\Creditor\DebtorDebt.cshtml" />
+    <Content Include="Views\Creditor\DebtorLimitRisk.cshtml" />
+    <Content Include="Views\Creditor\Receivable.cshtml" />
+    <Content Include="Views\Creditor\Payment.cshtml" />
+    <Content Include="Views\Creditor\Agreement.cshtml" />
+    <Content Include="Views\Creditor\Invoice.cshtml" />
+    <Content Include="Views\Prefinance\PrefinanceInfo.cshtml" />
+    <Content Include="Views\Prefinance\PrefinanceEntry.cshtml" />
+    <Content Include="Views\Prefinance\PrefinanceCollection.cshtml" />
+    <Content Include="Views\Other\Stocks.cshtml" />
+    <Content Include="Views\Other\ChangePassword.cshtml" />
+    <Content Include="Views\Other\VDFAutoFinance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

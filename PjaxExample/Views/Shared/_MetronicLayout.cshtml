@@ -80,37 +80,37 @@
                         <h3>Menü</h3>
                     </li>
                     <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Borçlu İşlemleri</span> <span class="arrow"></span> </a> <ul class="sub-menu">
-                           
-                         <li class="nav-item  "> <a href="~/Home/Page1" class="pjax">Page1</a> </li>
+                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Borçlu İşlemleri</span> <span class="arrow"></span> </a> 
+                        <ul class="sub-menu">
+                            <li class="nav-item  "> <a href="@Url.Action("Debt", "Debtor")" class="nav-link"> <span class="title">Borç Bilgileri</span> </a> </li>
                             <li class="nav-item  ">
                                 <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-car"></i> <span class="title">Rehin İşlemleri</span> <span class="arrow"></span> </a>
                                 <ul class="sub-menu">
-                                    <li class="nav-item "> <a href="page_general_portfolio_1.html" class="nav-link page-link">- Takas Araç Bilgileri</a> </li>
-                                    <li class="nav-item "> <a href="page_general_portfolio_2.html" class="nav-link page-link">- Rehin Bilgileri </a> </li>
+                                    <li class="nav-item "> <a href="@Url.Action("TradeVehicleList", "TradeVehicle")" class="nav-link">- Takas Araç Bilgileri</a> </li>
+                                    <li class="nav-item "> <a href="@Url.Action("PledgedVehicleList", "TradeVehicle")" class="nav-link">- Rehin Bilgileri </a> </li>
                                 </ul>
                             </li>
-                            <li class="nav-item  "> <a href="page_general_pricing.html" class="nav-link page-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_faq.html" class="nav-link page-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_blog.html" class="nav-link page-link"> <span class="title">Limit Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Invoice", "Debtor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Agreement", "Debtor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
+                            <li class="nav-item  "><a href="@Url.Action("Limit", "Debtor")" class="nav-link"> <span class="title">Limit Bilgileri</span> </a> </li>
                         </ul>
                     </li>
 
                     <li class="nav-item  ">
                         <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Alacaklı İşlemleri</span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("Debt", "Debtor")" class="nav-link page-link"> <span class="title">Borçlu Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">Borçlu Limit Risk Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">Alacak Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">Ödeme Tutarları Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Invoice", "Creditor")" class="nav-link page-link111"> <span class="title">Fatura Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="javascript:;" class="nav-link page-link" id="creditor-agreement"><span class="title">Mutabakat Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("DebtorDebt", "Creditor")" class="nav-link"> <span class="title">Borçlu Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("DebtorLimitRisk", "Creditor")" class="nav-link"> <span class="title">Borçlu Limit Risk Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Receivable", "Creditor")" class="nav-link"> <span class="title">Alacak Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Payment", "Creditor")" class="nav-link"> <span class="title">Ödeme Tutarları Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Invoice", "Creditor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Agreement", "Creditor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
                             <li class="nav-item  ">
                                 <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-credit-card"></i> <span class="title">Ön Ödeme</span> <span class="arrow"></span> </a>
                                 <ul class="sub-menu">
-                                    <li class="nav-item "> <a href="page_general_portfolio_1.html" class="nav-link page-link">- Ön Ödeme Giriş</a> </li>
-                                    <li class="nav-item "> <a href="page_general_portfolio_2.html" class="nav-link page-link">- Ön Ödeme Bilgileri </a> </li>
-                                    <li class="nav-item "> <a href="page_general_portfolio_2.html" class="nav-link page-link">- Ön Ödeme Tahsilat Bilgileri </a> </li>
+                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceEntry", "Prefinance")" class="nav-link">- Ön Ödeme Giriş</a> </li>
+                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceInfo", "Prefinance")" class="nav-link">- Ön Ödeme Bilgileri </a> </li>
+                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceCollection", "Prefinance")" class="nav-link">- Ön Ödeme Tahsilat Bilgileri </a> </li>
                                 </ul>
                             </li>
                         </ul>
@@ -118,17 +118,16 @@
                     <li class="nav-item  ">
                         <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Diğer İşlemler</span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">Stok İzle</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">Şifre Değiştir</span> </a> </li>
-                            <li class="nav-item  "> <a href="page_general_contact.html" class="nav-link page-link"> <span class="title">VDF Otomotiv Finansmanı</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Stocks", "Other")" class="nav-link"> <span class="title">Stok İzle</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("ChangePassword", "Other")" class="nav-link"> <span class="title">Şifre Değiştir</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("VDFAutoFinance", "Other")" class="nav-link"> <span class="title">VDF Otomotiv Finansmanı</span> </a> </li>
                         </ul>
                     </li>
                     <li class="nav-item  ">
                         <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Test Ekranları</span> <span class="arrow"></span> </a>
                         <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("HistoryJS", "Test")" class="nav-link page-link111" id="debtor-debt"><span class="title">History.js</span> </a> </li>
-                            <li class="nav-item  "> <a href="javascript:;" class="nav-link page-link" id="debtor-debt"><span class="title">Partial debtor=>debt</span> </a> </li>
-                            <li class="nav-item  "> <a href="javascript:;" class="nav-link page-link" id="Test-Historyjs"><span class="title">Partial test=>historyjs</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Pjax1", "Test")" class="nav-link" id="debtor-debt"><span class="title">pajx 1</span> </a> </li>
+                            <li class="nav-item  "> <a href="@Url.Action("Pjax2", "Test")" class="nav-link" id="debtor-debt"><span class="title">pjax2</span> </a> </li>
                         </ul>
                     </li>
                 </ul> <!-- END SIDEBAR MENU --> <!-- END SIDEBAR MENU -->
