@@ -5940,6 +5940,7 @@
     <Content Include="Views\Home\Page2.cshtml" />
     <Content Include="Views\Home\Page3.cshtml" />
     <Content Include="Views\Shared\_MetronicLayout.cshtml" />
+    <Content Include="Views\Shared\_Breadcrumbs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
