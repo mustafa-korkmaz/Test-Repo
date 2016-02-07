@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Pjax.Mvc5;
 
-namespace PjaxExample.Controllers
+namespace VdfFactoring.Controllers
 {
     [Pjax]
     public class HomeController : Controller, IPjax

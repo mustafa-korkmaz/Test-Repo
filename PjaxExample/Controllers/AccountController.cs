@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using PjaxExample.Models;
+using VdfFactoring.Models;
 
-namespace PjaxExample.Controllers
+namespace VdfFactoring.Controllers
 {
     [Authorize]
     public class AccountController : Controller

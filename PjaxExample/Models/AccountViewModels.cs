@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PjaxExample.Models
+namespace VdfFactoring.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
