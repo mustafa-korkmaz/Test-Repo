@@ -26,8 +26,7 @@
             @if (item.Id == 0 && item.ParentId == 0) //sadece anasayfa için icon bas
             {
                 <i class="fa fa-home" style="color: #615F5F; font-size: 18px"></i>
-                @Html.ActionLink(title, actionName, controllerName);
-
+                <a href="@Url.Action(actionName, controllerName)" class="nav-link"> @title </a>
             }
             else
                 if ((controllerName == "" && actionName == "") || lastItem) //sadece anasayfa için icon bas
