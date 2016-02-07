@@ -12,7 +12,7 @@ using Pjax.Mvc5;
 namespace VdfFactoring.Controllers
 {
     [Pjax]
-    public class HomeController : Controller, IPjax
+    public class HomeController : BaseController, IPjax
     {
         public bool IsPjaxRequest { get; set; }
 

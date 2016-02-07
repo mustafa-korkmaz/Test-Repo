@@ -15,13 +15,6 @@ namespace VdfFactoring.Controllers
        //     ViewBag.UserLayoutCredentials = SessionHelper.GetValue<PCUserLayoutCredentials>(StaticVariables.Session.CURRENT_USER_LAYOUT_CREDENTIALS);
         }
 
-        // GET: /Base/
-  //      [FsisAuthentication]
-        public ActionResult index()
-        {
-            return View();
-        }
-
         /// <summary>
         /// gets the list for breadcrumbs section
         /// </summary>
