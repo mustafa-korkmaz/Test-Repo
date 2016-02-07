@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VdfFactoring", "PjaxExample\VdfFactoring.csproj", "{A586D657-ADB2-465F-A860-F93F5606C8A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VdfFactoring", "VdfFactoring\VdfFactoring.csproj", "{A586D657-ADB2-465F-A860-F93F5606C8A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{3E9341EC-6904-4CC9-A5FC-37890B4D23E6}"
 EndProject
