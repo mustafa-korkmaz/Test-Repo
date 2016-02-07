@@ -1,5 +1,4 @@
-﻿/*
-
+﻿
 jQuery(function ($) {
 
     $('#rendered-body').on('pjax:start', function () {
@@ -17,5 +16,3 @@ jQuery(function ($) {
         App.unblockUI(blockedElementSelector);
     });
 });
-
-*/

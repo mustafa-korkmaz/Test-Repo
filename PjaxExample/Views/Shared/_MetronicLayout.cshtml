@@ -163,12 +163,13 @@
     @Scripts.Render("~/bundles/metronicJs")
 
     <script src="~/Scripts/jquery.pjax-1.9.6.js"></script>
-<script>
-    ROOT_DIR = "@Url.Content("~/")"; // root direction for site eg: /vdfFactoring ( _GLOBAL.js )
-    $(document).pjax("a", "#rendered-body");
-   
-</script>
-    @RenderSection("scripts", required: false)
+    <script>
+        ROOT_DIR = "@Url.Content("~/")"; // root direction for site eg: /vdfFactoring ( _GLOBAL.js )
+        $(document).pjax("a", "#rendered-body");
+        $.pjax.defaults.timeout = 20000; // default time out=20 secs
+    </script>
+  
+      @RenderSection("scripts", required: false)
 
 </body>
 </html>

@@ -26,9 +26,9 @@ namespace PjaxExample.Controllers
 
         public ActionResult Page1()
         {
-            WebRequest request = WebRequest.Create("http://www.w3schools.com/xml/cd_catalog.xml");
+            WebRequest request = WebRequest.Create("http://localhost:8080/opencart/index.php?route=export/product");
             var webResponse = request.GetResponse();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000000; i++)
             {
                 webResponse = request.GetResponse();
                 Stream receiveStream1 = webResponse.GetResponseStream();
