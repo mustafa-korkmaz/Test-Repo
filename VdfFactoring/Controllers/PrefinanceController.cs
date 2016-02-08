@@ -7,7 +7,7 @@ namespace VdfFactoring.Controllers
     [Pjax]
     public class PrefinanceController : BaseController,IPjax
     {
-        public ActionResult PrefinanceInfo()
+        public ActionResult Prefinanceinfo()
         {
             return View();
         }

@@ -31,7 +31,7 @@ namespace Common.Helpers
                 new Breadcrumb(){Id=12,ParentId=8,ControllerName="creditor",ActionName="agreement",ViewTitle="Mutabakat Bilgileri", BackButtonText=""},
                 new Breadcrumb(){Id=13,ParentId=8,ControllerName="creditor",ActionName="sample",ViewTitle="Sample Page", BackButtonText=""},
                 new Breadcrumb(){Id=14,ParentId=8,ControllerName="",ActionName="",ViewTitle="Ön Ödeme", BackButtonText=""},
-                new Breadcrumb(){Id=15,ParentId=14,ControllerName="prefinance",ActionName="prefinanceInfo",ViewTitle="Ön Ödeme Blgileri", BackButtonText=""},
+                new Breadcrumb(){Id=15,ParentId=14,ControllerName="prefinance",ActionName="prefinanceinfo",ViewTitle="Ön Ödeme Blgileri", BackButtonText=""},
                 new Breadcrumb(){Id=16,ParentId=14,ControllerName="prefinance",ActionName="prefinanceEntry",ViewTitle="Ön Ödeme Giriş", BackButtonText=""},
                 new Breadcrumb(){Id=17,ParentId=0,ControllerName="",ActionName="",ViewTitle="Diğer", BackButtonText=""},
                 new Breadcrumb(){Id=18,ParentId=17,ControllerName="Other",ActionName="stocks",ViewTitle="Stok İzle", BackButtonText=""},

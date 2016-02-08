@@ -5961,7 +5961,7 @@
     <Content Include="Views\Creditor\Payment.cshtml" />
     <Content Include="Views\Creditor\Agreement.cshtml" />
     <Content Include="Views\Creditor\Invoice.cshtml" />
-    <Content Include="Views\Prefinance\PrefinanceInfo.cshtml" />
+    <Content Include="Views\Prefinance\Prefinanceinfo.cshtml" />
     <Content Include="Views\Prefinance\PrefinanceEntry.cshtml" />
     <Content Include="Views\Prefinance\PrefinanceCollection.cshtml" />
     <Content Include="Views\Other\Stocks.cshtml" />
