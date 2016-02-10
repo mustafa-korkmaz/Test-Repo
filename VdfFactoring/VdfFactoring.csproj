@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PjaxExample</RootNamespace>
-    <AssemblyName>PjaxExample</AssemblyName>
+    <RootNamespace>VdfFactoring</RootNamespace>
+    <AssemblyName>VdfFactoring</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -164,12 +164,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CreditorController.cs" />
+    <Compile Include="Controllers\DataGridController.cs" />
     <Compile Include="Controllers\DebtorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OtherController.cs" />
     <Compile Include="Controllers\PrefinanceController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TradeVehicleController.cs" />
+    <Compile Include="CustomerDataGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +179,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerModel.cs" />
+    <Compile Include="ViewModels\DataGridModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\apps\css\inbox.css" />
@@ -5971,6 +5975,7 @@
     <Content Include="Views\Shared\_TopNavigation.cshtml" />
     <Content Include="Views\Shared\_PageSideBar.cshtml" />
     <Content Include="Views\Shared\_MetronicLayout - backUp.cshtml" />
+    <Content Include="Views\Test\DataGridSample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

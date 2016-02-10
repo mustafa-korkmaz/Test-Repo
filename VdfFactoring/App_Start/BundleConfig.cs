@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace PjaxExample
+namespace VdfFactoring
 {
     public class BundleConfig
     {
@@ -36,14 +36,16 @@ namespace PjaxExample
                        "~/Content/assets/global/plugins/uniform/css/uniform.default.css",
                        "~/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css", //END GLOBAL MANDATORY STYLES
                        "~/Content/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css", //BEGIN PAGE LEVEL PLUGINS
-                       "~/Content/assets/global/plugins/fullcalendar/fullcalendar.min.css", //END PAGE LEVEL PLUGINS
-                       "~/Content/assets/global/css/plugins.min.css",   // THEME GLOBAL STYLES
-                       "~/Content/assets/global/css/components-rounded.min.css",
+                       "~/Content/assets/global/plugins/fullcalendar/fullcalendar.min.css",
+                       "~/Content/assets/global/plugins/datatables/datatables.min.css",
+                      "~/Content/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css",//END PAGE LEVEL PLUGINS
+                      "~/Content/assets/global/css/components-rounded.min.css",   // BEGIN THEME GLOBAL STYLES
+                      "~/Content/assets/global/css/plugins.min.css",  // END THEME GLOBAL STYLES
                        "~/Content/assets/layouts/layout/css/layout.min.css", // BEGIN THEME LAYOUT STYLES
                        "~/Content/assets/layouts/layout/css/themes/light2.min.css",
-                       "~/Content/assets/layouts/layout/css/custom.min.css"  //END THEME LAYOUT STYLES                 
+                       "~/Content/assets/layouts/layout/css/custom.min.css" //END THEME LAYOUT STYLES                 
             ));
-
+            //Content\assets\global\plugins\datatables
             #endregion factoring main layout css
 
             #region factoring main layout js
@@ -71,7 +73,9 @@ namespace PjaxExample
                        "~/Content/assets/global/scripts/app.min.js", // THEME GLOBAL SCRIPTS
                        "~/Content/assets/layouts/layout/scripts/layout.min.js", //BEGIN THEME LAYOUT SCRIPTS
                        "~/Content/assets/layouts/layout/scripts/demo.min.js",
-                       "~/Content/assets/layouts/global/scripts/quick-sidebar.min.js" //END THEME LAYOUT SCRIPTS
+                       "~/Content/assets/layouts/global/scripts/quick-sidebar.min.js",
+                       "~/Content/assets/global/plugins/datatables/datatables.min.js",
+                       "~/Content/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"//END THEME LAYOUT SCRIPTS
                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/metronicJsForIE").Include(

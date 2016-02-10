@@ -19,6 +19,12 @@ namespace VdfFactoring.Controllers
 
         public ActionResult Pjax2()
         {
+            ViewBag.Title = "Pjax2";
+            return View();
+        }
+
+        public ActionResult DataGridSample()
+        {
             return View();
         }
 

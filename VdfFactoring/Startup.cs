@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(PjaxExample.Startup))]
-namespace PjaxExample
+[assembly: OwinStartupAttribute(typeof(VdfFactoring.Startup))]
+namespace VdfFactoring
 {
     public partial class Startup
     {
