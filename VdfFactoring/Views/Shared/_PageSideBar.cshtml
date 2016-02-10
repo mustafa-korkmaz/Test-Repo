@@ -1,0 +1,76 @@
+﻿
+<div class="page-sidebar-wrapper">
+    <!-- BEGIN SIDEBAR --> <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+
+    <div class="page-sidebar navbar-collapse collapse">
+        <!-- BEGIN SIDEBAR MENU -->
+        <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+        <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+        <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing --> <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+        <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+            <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+            <li class="sidebar-toggler-wrapper hide">
+                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+                <div class="sidebar-toggler"> </div> <!-- END SIDEBAR TOGGLER BUTTON -->
+            </li> <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+
+            <li class="heading">
+                <h3>Menü</h3>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Borçlu İşlemleri</span> <span class="arrow"></span> </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  "> <a href="@Url.Action("Debt", "Debtor")" class="nav-link"> <span class="title">Borç Bilgileri</span> </a> </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-car"></i> <span class="title">Rehin İşlemleri</span> <span class="arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item "> <a href="@Url.Action("TradeVehicleList", "TradeVehicle")" class="nav-link">- Takas Araç Bilgileri</a> </li>
+                            <li class="nav-item "> <a href="@Url.Action("PledgedVehicleList", "TradeVehicle")" class="nav-link">- Rehin Bilgileri </a> </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Invoice", "Debtor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Agreement", "Debtor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
+                    <li class="nav-item  "><a href="@Url.Action("Limit", "Debtor")" class="nav-link"> <span class="title">Limit Bilgileri</span> </a> </li>
+                </ul>
+            </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Alacaklı İşlemleri</span> <span class="arrow"></span> </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  "> <a href="@Url.Action("DebtorDebt", "Creditor")" class="nav-link"> <span class="title">Borçlu Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("DebtorLimitRisk", "Creditor")" class="nav-link"> <span class="title">Borçlu Limit Risk Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Receivable", "Creditor")" class="nav-link"> <span class="title">Alacak Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Payment", "Creditor")" class="nav-link"> <span class="title">Ödeme Tutarları Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Invoice", "Creditor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Agreement", "Creditor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-credit-card"></i> <span class="title">Ön Ödeme</span> <span class="arrow"></span> </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item "> <a href="@Url.Action("PrefinanceEntry", "Prefinance")" class="nav-link">- Ön Ödeme Giriş</a> </li>
+                            <li class="nav-item "> <a href="@Url.Action("PrefinanceInfo", "Prefinance")" class="nav-link">- Ön Ödeme Bilgileri </a> </li>
+                            <li class="nav-item "> <a href="@Url.Action("PrefinanceCollection", "Prefinance")" class="nav-link">- Ön Ödeme Tahsilat Bilgileri </a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Diğer İşlemler</span> <span class="arrow"></span> </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  "> <a href="@Url.Action("Stocks", "Other")" class="nav-link"> <span class="title">Stok İzle</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("ChangePassword", "Other")" class="nav-link"> <span class="title">Şifre Değiştir</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("VDFAutoFinance", "Other")" class="nav-link"> <span class="title">VDF Otomotiv Finansmanı</span> </a> </li>
+                </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Test Ekranları</span> <span class="arrow"></span> </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  "> <a href="@Url.Action("Pjax1", "Test")" class="nav-link" id="debtor-debt"><span class="title">pajx 1</span> </a> </li>
+                    <li class="nav-item  "> <a href="@Url.Action("Pjax2", "Test")" class="nav-link" id="debtor-debt"><span class="title">pjax2</span> </a> </li>
+                </ul>
+            </li>
+        </ul> <!-- END SIDEBAR MENU --> <!-- END SIDEBAR MENU -->
+    </div> <!-- END SIDEBAR -->
+</div>

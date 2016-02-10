@@ -26,28 +26,6 @@ namespace VdfFactoring.Controllers
 
         public ActionResult Page1()
         {
-            WebRequest request = WebRequest.Create("http://localhost:8080/opencart/index.php?route=export/product");
-            var webResponse = request.GetResponse();
-            for (int i = 0; i < 10000000; i++)
-            {
-                webResponse = request.GetResponse();
-                Stream receiveStream1 = webResponse.GetResponseStream();
-                StreamReader readStream1 = new StreamReader(receiveStream1, Encoding.UTF8);
-
-                string webResponseData1 = readStream1.ReadToEnd();
-            }
-
-            // Get the stream associated with the response.
-            Stream receiveStream = webResponse.GetResponseStream();
-
-            // Pipes the stream to a higher level stream reader with the required encoding format. 
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-
-            string webResponseData = readStream.ReadToEnd();
-
-
-            webResponse.Close();
-            readStream.Close();
             return View();
         }
 

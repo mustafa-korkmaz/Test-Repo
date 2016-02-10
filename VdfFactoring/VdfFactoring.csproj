@@ -5967,6 +5967,10 @@
     <Content Include="Views\Other\Stocks.cshtml" />
     <Content Include="Views\Other\ChangePassword.cshtml" />
     <Content Include="Views\Other\VDFAutoFinance.cshtml" />
+    <Content Include="Views\Shared\_PageFooter.cshtml" />
+    <Content Include="Views\Shared\_TopNavigation.cshtml" />
+    <Content Include="Views\Shared\_PageSideBar.cshtml" />
+    <Content Include="Views\Shared\_MetronicLayout - backUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

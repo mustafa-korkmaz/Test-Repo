@@ -13,6 +13,7 @@ namespace VdfFactoring.Controllers
 
         public ActionResult Pjax1()
         {
+            System.Threading.Thread.Sleep(1500);
             return View();
         }
 

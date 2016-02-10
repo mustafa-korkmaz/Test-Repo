@@ -15,7 +15,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Metronic | Blank Page Layout</title>
+    <title>VDF Faktoring</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -33,106 +33,25 @@
 
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
-
             <div class="page-logo">
                 <a href="index.html"> <img src="@Url.Content("~/Content/assets/layouts/layout/img/vdf_logo.png")" alt="Vdf Faktoring" class="logo-default" /> </a>
                 <div class="menu-toggler sidebar-toggler"> </div>
-            </div> <!-- END LOGO --> <!-- BEGIN RESPONSIVE MENU TOGGLER --> <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a> <!-- END RESPONSIVE MENU TOGGLER --> <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu">
-                <ul class="nav navbar-nav pull-right">
-                    <!-- BEGIN USER LOGIN DROPDOWN --> <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li class="dropdown dropdown-user">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <span class="username username-hide-on-mobile"> Onur Güç </span> <i class="fa fa-angle-down"></i>
-                        </a> <ul class="dropdown-menu dropdown-menu-default">
-                            <li> <a href="page_user_profile_1.html"> <i class="icon-user"></i> My Profile </a> </li>
-                            <li> <a href="app_calendar.html"> <i class="icon-calendar"></i> My Calendar </a> </li>
-
-                            <li class="divider"> </li>
-                            <li> <a href="page_user_lock_1.html"> <i class="icon-lock"></i> Lock Screen </a> </li>
-                            <li> <a href="page_user_login_1.html"> <i class="icon-key"></i> Log Out </a> </li>
-                        </ul>
-                    </li> <!-- END USER LOGIN DROPDOWN -->
-                </ul>
-            </div> <!-- END TOP NAVIGATION MENU -->
+            </div> 
+        <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a> 
+        <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            @Html.Partial("_TopNavigation")
+            <!-- END TOP NAVIGATION MENU -->
         </div> <!-- END HEADER INNER -->
-    </div> <!-- END HEADER --> <!-- BEGIN HEADER & CONTENT DIVIDER --> <div class="clearfix"> </div> <!-- END HEADER & CONTENT DIVIDER --> <!-- BEGIN CONTAINER --> <div class="page-container">
+    </div> <!-- END HEADER --> <!-- BEGIN HEADER & CONTENT DIVIDER -->
+    <div class="clearfix"> </div> <!-- END HEADER & CONTENT DIVIDER --> <!-- BEGIN CONTAINER -->
+    <div class="page-container">
         <!-- BEGIN SIDEBAR -->
-        <div class="page-sidebar-wrapper">
-            <!-- BEGIN SIDEBAR --> <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-            <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-
-            <div class="page-sidebar navbar-collapse collapse">
-                <!-- BEGIN SIDEBAR MENU -->
-                <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-                <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-                <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-                <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing --> <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-                <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-                <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-                    <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
-                    <li class="sidebar-toggler-wrapper hide">
-                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-                        <div class="sidebar-toggler"> </div> <!-- END SIDEBAR TOGGLER BUTTON -->
-                    </li> <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-
-                    <li class="heading">
-                        <h3>Menü</h3>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Borçlu İşlemleri</span> <span class="arrow"></span> </a> 
-                        <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("Debt", "Debtor")" class="nav-link"> <span class="title">Borç Bilgileri</span> </a> </li>
-                            <li class="nav-item  ">
-                                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-car"></i> <span class="title">Rehin İşlemleri</span> <span class="arrow"></span> </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item "> <a href="@Url.Action("TradeVehicleList", "TradeVehicle")" class="nav-link">- Takas Araç Bilgileri</a> </li>
-                                    <li class="nav-item "> <a href="@Url.Action("PledgedVehicleList", "TradeVehicle")" class="nav-link">- Rehin Bilgileri </a> </li>
-                                </ul>
-                            </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Invoice", "Debtor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Agreement", "Debtor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
-                            <li class="nav-item  "><a href="@Url.Action("Limit", "Debtor")" class="nav-link"> <span class="title">Limit Bilgileri</span> </a> </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Alacaklı İşlemleri</span> <span class="arrow"></span> </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("DebtorDebt", "Creditor")" class="nav-link"> <span class="title">Borçlu Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("DebtorLimitRisk", "Creditor")" class="nav-link"> <span class="title">Borçlu Limit Risk Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Receivable", "Creditor")" class="nav-link"> <span class="title">Alacak Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Payment", "Creditor")" class="nav-link"> <span class="title">Ödeme Tutarları Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Invoice", "Creditor")" class="nav-link"> <span class="title">Fatura Bilgileri</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Agreement", "Creditor")" class="nav-link"><span class="title">Mutabakat Bilgileri</span> </a> </li>
-                            <li class="nav-item  ">
-                                <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-credit-card"></i> <span class="title">Ön Ödeme</span> <span class="arrow"></span> </a>
-                                <ul class="sub-menu">
-                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceEntry", "Prefinance")" class="nav-link">- Ön Ödeme Giriş</a> </li>
-                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceInfo", "Prefinance")" class="nav-link">- Ön Ödeme Bilgileri </a> </li>
-                                    <li class="nav-item "> <a href="@Url.Action("PrefinanceCollection", "Prefinance")" class="nav-link">- Ön Ödeme Tahsilat Bilgileri </a> </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Diğer İşlemler</span> <span class="arrow"></span> </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("Stocks", "Other")" class="nav-link"> <span class="title">Stok İzle</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("ChangePassword", "Other")" class="nav-link"> <span class="title">Şifre Değiştir</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("VDFAutoFinance", "Other")" class="nav-link"> <span class="title">VDF Otomotiv Finansmanı</span> </a> </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle"> <i class="fa fa-circle menu-item-icon"></i> <span class="title">Test Ekranları</span> <span class="arrow"></span> </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item  "> <a href="@Url.Action("Pjax1", "Test")" class="nav-link" id="debtor-debt"><span class="title">pajx 1</span> </a> </li>
-                            <li class="nav-item  "> <a href="@Url.Action("Pjax2", "Test")" class="nav-link" id="debtor-debt"><span class="title">pjax2</span> </a> </li>
-                        </ul>
-                    </li>
-                </ul> <!-- END SIDEBAR MENU --> <!-- END SIDEBAR MENU -->
-            </div> <!-- END SIDEBAR -->
-        </div> <!-- END SIDEBAR --> <!-- BEGIN CONTENT -->
+        @Html.Partial("_PageSideBar")
+        <!-- END SIDEBAR -->
+        <!-- BEGIN CONTENT -->
         <div class="page-content-wrapper">
             <!-- BEGIN CONTENT BODY -->
             <div class="page-content" id="page-content">
@@ -142,19 +61,12 @@
                 </div>
                 <!--END RENDERED-BODY-->
             </div> <!-- END CONTENT BODY -->
-        </div> <!-- END CONTENT -->
+        </div>
+        <!-- END CONTENT -->
     </div>
     <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-    <div class="page-footer">
-        <div class="page-footer-inner">
-            @DateTime.Today.Year &copy;
-            <a href="http://vdffaktoring.com.tr" title="VDF Faktoring" target="_blank">VDF Faktoring</a>
-        </div>
-        <div class="scroll-to-top">
-            <i class="icon-arrow-up"></i>
-        </div>
-    </div>
+<!-- BEGIN FOOTER -->
+    @Html.Partial("_PageFooter")
     <!-- END FOOTER -->
     <!--[if lt IE 9]>
       @Scripts.Render("~/bundles/metronicJsForIE")
@@ -167,8 +79,8 @@
         $(document).pjax("a.nav-link", "#rendered-body");
         $.pjax.defaults.timeout = 20000; // default time out=20 secs
     </script>
-  
-      @RenderSection("scripts", required: false)
+
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>
