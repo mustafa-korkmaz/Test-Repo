@@ -179,8 +179,12 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="ViewModels\CustomerModel.cs" />
     <Compile Include="ViewModels\DataGridModel.cs" />
+    <Compile Include="Models\Shared\DataGridModel.cs" />
+    <Compile Include="ViewModels\DataGridTestModel.cs" />
+    <Compile Include="ViewModels\PersonViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\apps\css\inbox.css" />
@@ -5976,6 +5980,9 @@
     <Content Include="Views\Shared\_PageSideBar.cshtml" />
     <Content Include="Views\Shared\_MetronicLayout - backUp.cshtml" />
     <Content Include="Views\Test\DataGridSample.cshtml" />
+    <Content Include="Views\Test\PartialDataGrid.cshtml" />
+    <Content Include="Views\Shared\_DataGrid.cshtml" />
+    <Content Include="Views\Shared\_DataGridSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

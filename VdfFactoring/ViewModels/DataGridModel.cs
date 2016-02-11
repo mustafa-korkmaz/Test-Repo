@@ -2,12 +2,6 @@
 
 namespace VdfFactoring.ViewModels
 {
-    /// <summary>
-    /// grid model for datatables.js
-    /// </summary>
-    public class DataGridModel
-    {
-    }
 
     public class DataGridRequestQueryString
     {
@@ -24,7 +18,8 @@ namespace VdfFactoring.ViewModels
         public int draw { get; set; }
         public int recordsTotal { get; set; }
         public int recordsFiltered { get; set; }
-        public List<CustomerModel> data { get; set; }
+        //public List<CustomerModel> data { get; set; }
+        public List<SimplePersonViewModel> data { get; set; }
     }
 
     public enum DataGridOrderType

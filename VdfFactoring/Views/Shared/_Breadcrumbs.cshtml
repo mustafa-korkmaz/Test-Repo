@@ -2,21 +2,15 @@
     string backButtonText = string.Empty;
     bool lastItem = false;
 }
-@*<ul class="page-breadcrumb">
-        <li><i class="fa fa-home" style="color: #615F5F; font-size: 18px"></i> <a href="index.html">Anasayfa</a> <i class="fa fa-circle"></i> </li>
-        <li> <a href="#">Blank Page</a> <i class="fa fa-circle"></i> </li>
-        <li> <span>Page Layouts</span> </li>
-    </ul>*@
 
-
-
+<!-- BEGIN BREADCRUMBS -->
 <ul class="page-breadcrumb">
     @foreach (var item in ViewBag.Breadcrumbs)
     {
         string actionName = item.ActionName as string;
         string controllerName = item.ControllerName as string;
         string title = item.ViewTitle as string;
-        if (item == ((List<Common.UIElements.Breadcrumb>)ViewBag.Breadcrumbs).Last())
+        if (item == ((List<Common.UIElements.Breadcrumb>) ViewBag.Breadcrumbs).Last())
         {
             lastItem = true;
             backButtonText = item.BackButtonText;
@@ -28,21 +22,21 @@
                 <i class="fa fa-home" style="color: #615F5F; font-size: 18px"></i>
                 <a href="@Url.Action(actionName, controllerName)" class="nav-link"> @title </a>
             }
-            else
-                if ((controllerName == "" && actionName == "") || lastItem) //sadece anasayfa için icon bas
-                {
-                    <i class="fa fa-circle"></i>
-                    <a class="no-navigate" href="#">@title</a>
+            else if ((controllerName == "" && actionName == "") || lastItem) //sadece anasayfa için icon bas
+            {
+                <i class="fa fa-circle"></i>
+                <a class="no-navigate" href="#">@title</a>
 
-                }
-                else
-                {
-                    string anchor = controllerName + actionName[0].ToString().ToUpper() + actionName.Substring(1); // #homeIndex , #debtorDebt vb..
-                    <a href="#@anchor" onclick="loadPageFromBreadcrumb('@controllerName','@actionName');">@title</a>
-                }
+            }
+            else
+            {
+                string anchor = controllerName + actionName[0].ToString().ToUpper() + actionName.Substring(1); // #homeIndex , #debtorDebt vb..
+                <a href="#@anchor" onclick="loadPageFromBreadcrumb('@controllerName', '@actionName');">@title</a>
+            }
         </li>
     }
-</ul><!-- .breadcrumb -->
+</ul>
+<!-- END BREADCRUMBS -->
 @if (lastItem && backButtonText != "")
 {
     <span class="pull-right" style="color:#AAA;padding-right:10px;font-weight:bold;">

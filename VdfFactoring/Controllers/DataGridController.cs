@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
-using VdfFactoring.Models;
+using VdfFactoring.ViewModels;
 using VdfFactoring.ViewModels;
 
 namespace VdfFactoring.Controllers
@@ -24,13 +25,38 @@ namespace VdfFactoring.Controllers
             DataGridResponse resp = new DataGridResponse
             {
                 draw = queryString.draw,
-                data = new CustomerDataGenerator().GenerateCustomerList(queryString),
-                recordsFiltered = 505,
-                recordsTotal = 505
+                //data = new CustomerDataGenerator().GenerateCustomerList(queryString),
+                recordsFiltered = 100,
+                recordsTotal = 100,
+                data = GetSimplePersonViewList()
             };
 
             return Json(resp, JsonRequestBehavior.AllowGet);
         }
+
+        private List<SimplePersonViewModel> GetSimplePersonViewList()
+        {
+            List<SimplePersonViewModel> pList = new List<SimplePersonViewModel>();
+
+            SimplePersonViewModel p = new SimplePersonViewModel();
+
+            for (int i = 0; i < 100; i++)
+            {
+                p = new SimplePersonViewModel()
+                {
+                    BirthDate = DateTime.Now.AddDays(-1000 + i),
+                    ModifiedDate = DateTime.Now.AddDays(-2000 + i),
+                    Salary = i + 10.5,
+                    Gender = "E",
+                    Id = i,
+                    Name = "My name is " + (i + 1)
+                };
+
+                pList.Add(p);
+            }
+            return pList;
+        }
+
 
     }
 }

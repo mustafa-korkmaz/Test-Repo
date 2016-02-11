@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using VdfFactoring.Models;
+using VdfFactoring.ViewModels;
 
 namespace VdfFactoring.Controllers
 {

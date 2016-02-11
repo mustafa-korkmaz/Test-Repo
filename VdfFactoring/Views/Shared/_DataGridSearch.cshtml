@@ -1,0 +1,133 @@
+﻿@model List<DataGridColumn>
+
+@using System.Collections
+@using Common.Helpers
+@using Common.UIElements
+@using FSIS.Models
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="user-message-modal"></div> <!--user messages section-->
+        @using (Html.BeginForm("SaveVehicle", "TradeVehicle", FormMethod.Post, new { @class = "form-horizontal", @role = "form", id = "save-vehicle" }))
+        {
+            int index=0;
+            int inputCounter=0;
+            while (index<Model.Count)
+	        {
+                   switch (Model[index].DataGridSearch.SearchType)
+	                {
+                        case DataSearchType.Text:
+                        if (inputCounter==0)
+	                    {
+	                        @:<div class="form-group">
+                                @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                         
+                            @:  <div class="input-group col-sm-3" style="padding-right:0">
+                                @Html.TextBox(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "form-control " })
+                                @: </div>
+                            @: <div class="col-sm-1" style="width:0px;"></div>
+                            }
+                        else
+                        {
+                              @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                        @: <div class="input-group col-sm-3" style="padding-right:0">
+                             @Html.TextBox(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "form-control " })
+                        @: </div>
+                         @:</div>
+                            }
+                        break;
+                        case DataSearchType.Dropdown:
+                           List<SelectOption> optionList = Model[index].DataGridSearch.DataSource as List<SelectOption>;
+	                            SelectList sList = new SelectList(optionList,"Value","Text","selected_value");
+	                        if (inputCounter == 0)
+	                        {
+                                     @:<div class="form-group">
+                               @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+	                            <div class="input-group col-sm-3" style="padding-left: 0">
+                                    @Html.DropDownList(Model[index].FieldName, sList, new { @class = "width-100 chosen-select " + Model[index].FieldName })
+	                            </div>
+               @: <div class="col-sm-1" style="width:0px;"></div>
+	                        }
+	                            else
+                            {
+                             
+                                    @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                                 <div class="input-group col-sm-3" style="padding-left: 0">
+                                     @Html.DropDownList(Model[index].FieldName, sList, new { @class = "width-100 chosen-select " + Model[index].FieldName })
+                                </div>
+                                        @:</div>
+                            }
+	                        <script type="text/javascript">
+                                  $(".chosen-select.@Model[index].FieldName").chosen();
+                           </script>
+                        break;
+                        case DataSearchType.DatePicker:
+                            if (inputCounter==0)
+	                    {
+	                        @:<div class="form-group">
+                                @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                        <div class="input-group col-sm-3" style="padding-left: 0">
+                          @Html.TextBox(Model[index].FieldName, DateTime.Now.ToShortDateString(), new { @class = "form-control date-picker", @type = "text" })
+                        <span class="input-group-addon">
+                            <i class="icon-calendar bigger-110" style="cursor: pointer"></i>
+                        </span>
+                    </div>
+                            @: <div class="col-sm-1" style="width:0px;"></div>
+                            }
+                        else
+                        {
+                        @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                     <div class="input-group col-sm-3" style="padding-left: 0">
+                        @Html.TextBox(Model[index].FieldName, DateTime.Now.ToShortDateString(), new { @class = "form-control date-picker", @type = "text" })
+                        <span class="input-group-addon">
+                            <i class="icon-calendar bigger-110" style="cursor: pointer"></i>
+                        </span>
+                    </div>
+                            @:</div>
+                            }
+                                break;
+                                case DataSearchType.DateRangePicker:
+                                   @Html.Label(Model[index].FieldName, Model[index].DataGridSearch.Label, new { @class = "col-sm-2 control-label no-padding-right align-left" })
+                                <div class="col-sm-10">
+                                    <div class="input-group col-sm-3" style="padding-left:0">
+                                        @Html.TextBox(Model[index].FieldName, DateTime.Now.ToShortDateString(), new { @class = "form-control date-picker", @type = "text" })
+                                        <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110" style="cursor:pointer"></i>
+                                        </span>
+                                    </div> <!--dateFrom-->
+
+                                    <div class="input-group col-sm-3" style="padding-right:0">
+                                  @Html.TextBox(Model[index].FieldName+"_dateTo", DateTime.Now.ToShortDateString(), new { @class = "form-control date-picker", @type = "text" })
+                                        <span class="input-group-addon">
+                                            <i class="icon-calendar bigger-110" style="cursor:pointer"></i>
+                                        </span>
+                                    </div><!--dateTo-->
+                                </div><!--col-->
+                                break;
+                                default:
+                                break;
+                                }
+                   if (inputCounter==1)
+	                {
+		                 inputCounter=0;
+	                }
+                   else
+                   {
+                       inputCounter++;
+                   }
+                   index++;
+                                }
+                                
+                            <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="align-right input-group col-sm-10">
+                                    <button class="btn btn-info no-border" type="submit" id="submit-button">
+                                        <i class="icon-search icon-on-right bigger-110"></i>
+                                 Listele
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+           }
+    </div>
+</div>

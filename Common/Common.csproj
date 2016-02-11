@@ -40,12 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attrributes\DataColumnAttribute.cs" />
+    <Compile Include="Attrributes\DataGridAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIElements\Breadcrumb.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\StaticMethods.cs" />
     <Compile Include="Helpers\StaticVariables.cs" />
+    <Compile Include="UIElements\DataGrid\DataGrid.cs" />
+    <Compile Include="UIElements\DataGrid\DataGridCell.cs" />
+    <Compile Include="UIElements\DataGrid\DataGridColumn.cs" />
+    <Compile Include="UIElements\DataGrid\DataGridRow.cs" />
+    <Compile Include="UIElements\DataGrid\DataGridSearch.cs" />
+    <Compile Include="UIElements\ImageButton.cs" />
+    <Compile Include="UIElements\LinkButton.cs" />
+    <Compile Include="UIElements\PCColumn.cs" />
+    <Compile Include="UIElements\SelectOption.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

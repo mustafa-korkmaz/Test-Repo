@@ -1,0 +1,387 @@
+﻿@model VdfFactoring.Models.DataGridModel
+@*
+
+    @using Common.Helpers
+    @using Common.UIElements
+    @using FSIS.Models*@
+
+@*@if (Model.DataGrid.ShowSearchSection && Model.DataGrid.DataSearchColumnList.Any())
+    {
+        @Html.Partial("_DataGridSearch", Model.DataGrid.DataSearchColumnList)
+    }*@
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet box blue">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-globe"></i>Column Reordering
+                </div>
+                <div class="tools"> </div>
+            </div>
+            <div class="portlet-body">
+                <table class="table table-striped table-bordered table-hover" id="first-sample">
+                    <thead>
+                        <tr>
+                            @*@if (Model.DataGrid.IsRowsCheckable)
+                                {
+                                    <th class="center">
+                                        <label>
+                                            <input type="checkbox" class="ace" />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </th>
+                                }*@
+                            @{
+                                foreach (var column in Model.DataGrid.Columns)
+                                {
+                                    if (column.IsVisible)
+                                    {
+                                        <th>@column.DisplayName</th>
+                                    }
+                                }
+                                @*if (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable) //generate edit-delete buttons for grid
+                                    {
+                                        if (Model.DataGrid.IsRowsEditable)
+                                        {
+                                            <th>
+                                                @Model.DataGrid.EditText
+                                            </th>
+                                        }
+                                        else
+                                        {
+                                            <th>
+                                                @Model.DataGrid.DeleteText
+                                            </th>
+                                        }
+                                    }*@
+                            }
+
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            @{
+                                for (int i = 0; i < Model.DataGrid.Columns.Count(); i++)
+                                {
+                                        <th></th>
+                                }
+                            }
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+
+@section Scripts
+        {
+    <script type="text/javascript">
+    var TableDatatablesColreorder = function () {
+
+        var init = function () {
+            $('#first-sample').DataTable({
+                //"pagingType": "full_numbers",
+                "emptyTable": "No data available in table",
+                "zeroRecords": "No matching records found",
+                "bFilter": false, //remove search text box
+                // "bStateSave": true,
+                // "iCookieDuration": 1000, //expiration of cookies for state saving
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "@Url.Action("FillDataGrid", "DataGrid")"
+                    //"data": function (d) {
+                    //    d.playWith = $("#data-count").val().trim();
+                    //}
+                },
+                "footerCallback": function (row, data, start, end, display) {
+                    var api = this.api(), data;
+
+                    // Remove the formatting to get integer data for summation
+                    var getFloatValue = function (input) {
+                        var s = String(input);
+                        var result = parseFloat(s.replace(",", "."));
+                        return result;
+                    }
+
+                    // Total over this page
+                    pageTotal = api
+                        .column(5, { page: 'current' })
+                        .data()
+                        .reduce(function (a, b) {
+                            return getFloatValue(a) + getFloatValue(b);
+                        }, 0);
+
+                    // Update footer
+                    $(api.column(5).footer()).html(
+                        pageTotal.toFixed(2)
+                    );
+                },
+                "columns":
+                [
+                    { "data": "Salary", "orderable": true },
+                    { "data": "Name", "orderable": false },
+                    { "data": "Gender", "orderable": true },
+                    { "data": "Id", "orderable": false },
+                    { "data": "BirthDate", "orderable": true },
+                    { "data": "ModifiedDate", "orderable": true }
+                ]
+            });
+        }
+
+        return {
+
+            //main function to initiate the module
+            init: function () {
+
+                if (!jQuery().dataTable) {
+                    console.log("already initialized dataTable!");
+                    return;
+                }
+                console.log("initialized dataTable!");
+                init();
+            }
+        };
+    }();
+
+    jQuery(document).ready(function () {
+
+        alert("ekmek");
+
+        $(".btn.blue").click(function (event) {
+            event.preventDefault();
+            alert("hop");
+            TableDatatablesColreorder.init();
+        });
+
+
+        $(".btn.default").click(function () {
+            var table = $('#first-sample').DataTable();
+            table.destroy();
+            $('#first-sample tbody,#first-sample tfoot tr th').empty();
+        });
+
+    });
+
+    </script>
+}
+
+
+
+
+
+
+@*<div class="table-responsive fsis-table">
+                    <table id="@Model.DataGrid.Id" class="table table-striped table-bordered table-hover ">
+                        <thead>
+                            <tr>
+                                @if (Model.DataGrid.IsRowsCheckable)
+                            {
+                            <th class="center">
+                                <label>
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            }
+                                @{
+                                foreach (var column in Model.DataGrid.Columns)
+                                {
+                                    if (column.IsVisible)
+                                    {
+                            <th>@column.DisplayName</th>
+                                    }
+                                }
+                                if (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable) //generate edit-delete buttons for grid
+                                {
+                                    if (Model.DataGrid.IsRowsEditable)
+                                    {
+                            <th>
+                                @Model.DataGrid.EditText
+                            </th>
+                                    }
+                                    else
+                                    {
+                            <th>
+                                @Model.DataGrid.DeleteText
+                            </th>
+                                    }
+                                }
+                                }
+
+                            </tr>
+                        </thead>
+
+                        <tfoot>
+                            <!--tfoot elementi içindeki -->
+                            <tr>
+                                @if (Model.DataGrid.IsRowsCheckable)
+                            {
+                            <th>Toplamlar</th>
+                                <!--checkbox kolonu varsa eklenmeli-->
+                            }
+                                @{
+                                foreach (var column in Model.DataGrid.Columns)
+                                {
+                                    if (column.IsVisible)
+                                    {
+                            <th style="text-align: right;"></th>
+                                    }
+                                }
+                                if (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable)
+                                {
+                            <th></th>
+                                    <!-- action kolonu varsa eklenmeli-->
+                                }
+                                }
+                            </tr>
+                        </tfoot>
+
+                        <tbody>
+                            @foreach (var row in Model.DataGrid.Rows)
+                        {
+                            <tr id="@row.Id">
+                                @if (Model.DataGrid.IsRowsCheckable)
+                                {
+                                <td class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                }
+
+                                @{
+                                    foreach (var cell in row.CellArray)
+                                    {
+                                        if (!cell.Column.IsVisible)
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            switch (cell.Column.DataType)
+                                            {
+                                                case ColumnDataType.Text:
+                                <td>@cell.ToString() </td>
+                                                    break;
+                                                case ColumnDataType.LinkButton:
+                                                    var linkButton = cell.Value as LinkButton;
+                                <td class="link-button">
+                                    @Html.Partial("_LinkButton", new LinkButtonModel(linkButton))
+                                </td>
+                                                    break;
+                                                case ColumnDataType.ImageButton:
+                                                    var imageButton = cell.Value as ImageButton;
+                                <td class="image-button">
+                                    @Html.Partial("_ImageButton", new ImageButtonModel(imageButton))
+                                </td>
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        }
+                                    }
+
+                                    if (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable)
+                                    {
+                                <td class="center row-actions">
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+                                        @if (Model.DataGrid.IsRowsEditable)
+                                                {
+                                                    switch (Model.DataGrid.EdittingRowDataLoadType)
+                                                    {
+                                                        case DataLoadType.AsPage:
+                                                <a class="green AsPage edit-row" href="#" title="@Model.DataGrid.EditText">
+                                                    <i class="icon-pencil bigger-130"></i>
+                                                </a>
+                                                            break;
+                                                        case DataLoadType.AsModalBox:
+                                                <a class="green AsModalBox edit-row" href="#modal-box" data-toggle="modal" title="@Model.DataGrid.EditText">
+                                                    <i class="icon-pencil bigger-130"></i>
+                                                </a>
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                }
+                                        @if (Model.DataGrid.IsRowsDeletable)
+                                                {
+                                                <a class="red delete-row" href="#" title="@Model.DataGrid.DeleteText">
+                                                    <i class="icon-trash bigger-130"></i>
+                                                </a>
+                                                }
+                                    </div>
+                                </td>
+                                    }
+                                }
+                            </tr>
+                        }
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var selected_row = []; //get selected row html
+            var table_id = '@Model.DataGrid.Id';
+            var summaryColumnsArray = JSON.parse('@Html.Raw(Model.SummaryColumns)'); // burada  summary total almak istediğin column number dizisi gönderilecek
+            setTableHeaderFooter(table_id, '@Model.DataGrid.ShowFooter', summaryColumnsArray);
+
+            $('#' + table_id).on('click', 'tbody td a', function () {
+                var anchor = $(this);
+                var td_element = anchor.closest('td');
+
+                if (td_element.hasClass('link-button')) { // link button clicked- we will use this click event  in linkButton.js
+                    return true;
+                }
+                if (!td_element.hasClass('row-actions')) {
+                    return false;
+                }
+                var tr_element = td_element.parent('tr');
+                var rowItemArray = [];
+                var row_id = tr_element.attr('id');
+                var columns = tr_element.find('td');
+
+                for (var i = 0; i < columns.length; i++) {
+                    var column = columns[i];
+                    if (column) {
+                        rowItemArray.push(column.innerHTML);
+                    }
+                }
+                selected_row = rowItemArray;
+
+                if (anchor.hasClass('edit-row')) {  //this is a row edit button click action
+                    if (typeof (rowEditButtonClick) == "function") { // is function implemented?
+                        console.log('rowEditButtonClick()');
+                        rowEditButtonClick(table_id, row_id, selected_row); //fire the default row click event function
+                    }
+                    else {
+                        console.log('rowEditButtonClick not implemented!');
+                        alert("you have forgotten to implement rowEditButtonClick() event!\ntableId: " + table_id + "\nrowId: " + row_id + "\nselectedRow: " + selected_row);
+                    }
+                }
+                else if (anchor.hasClass('delete-row')) {//this is a row delete button click action
+                    if (typeof (rowDeleteButtonClick) == "function") { // is function implemented?
+                        console.log('rowDeleteButtonClick()');
+                        rowDeleteButtonClick(table_id, row_id, selected_row); //fire the default row click event function
+                    }
+                    else {
+                        console.log('rowDeleteButtonClick not implemented!');
+                        alert("you have forgotten to implement rowDeleteButtonClick() event!\ntableId: " + table_id + "\nrowId: " + row_id + "\nselectedRow: " + selected_row);
+                    }
+                }
+            });
+        });
+    </script>*@

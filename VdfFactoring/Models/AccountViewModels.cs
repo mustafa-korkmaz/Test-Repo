@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VdfFactoring.Models
+namespace VdfFactoring.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
