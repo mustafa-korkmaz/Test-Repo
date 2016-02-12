@@ -9,6 +9,7 @@ namespace Common.UIElements
         private string fieldName;// non editable property name of a class
 
         public bool IsVisible { get; set; }
+        public bool IsOrderable { get; set; }
         public DataGridSearch DataGridSearch { get; set; }
         public bool UseInSummaryColumns { get; set; } // for getting column summary totals
         public bool ShowInDataExport { get; set; } //may be we want to export data for a hidden column

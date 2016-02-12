@@ -22,7 +22,7 @@
                 <div class="tools"> </div>
             </div>
             <div class="portlet-body">
-                <table class="table table-striped table-bordered table-hover" id="first-sample">
+                <table class="table table-striped table-bordered table-hover" id="@Model.DataGrid.Id">
                     <thead>
                         <tr>
                             @*@if (Model.DataGrid.IsRowsCheckable)
@@ -65,9 +65,9 @@
                     <tfoot>
                         <tr>
                             @{
-                                for (int i = 0; i < Model.DataGrid.Columns.Count(); i++)
+                                for (int i = 0; i < Model.DataGrid.Columns.Where(c => c.IsVisible).Count(); i++)
                                 {
-                                        <th></th>
+                                    <th></th>
                                 }
                             }
                         </tr>
@@ -79,104 +79,6 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 </div>
-
-
-@section Scripts
-        {
-    <script type="text/javascript">
-    var TableDatatablesColreorder = function () {
-
-        var init = function () {
-            $('#first-sample').DataTable({
-                //"pagingType": "full_numbers",
-                "emptyTable": "No data available in table",
-                "zeroRecords": "No matching records found",
-                "bFilter": false, //remove search text box
-                // "bStateSave": true,
-                // "iCookieDuration": 1000, //expiration of cookies for state saving
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    "url": "@Url.Action("FillDataGrid", "DataGrid")"
-                    //"data": function (d) {
-                    //    d.playWith = $("#data-count").val().trim();
-                    //}
-                },
-                "footerCallback": function (row, data, start, end, display) {
-                    var api = this.api(), data;
-
-                    // Remove the formatting to get integer data for summation
-                    var getFloatValue = function (input) {
-                        var s = String(input);
-                        var result = parseFloat(s.replace(",", "."));
-                        return result;
-                    }
-
-                    // Total over this page
-                    pageTotal = api
-                        .column(5, { page: 'current' })
-                        .data()
-                        .reduce(function (a, b) {
-                            return getFloatValue(a) + getFloatValue(b);
-                        }, 0);
-
-                    // Update footer
-                    $(api.column(5).footer()).html(
-                        pageTotal.toFixed(2)
-                    );
-                },
-                "columns":
-                [
-                    { "data": "Salary", "orderable": true },
-                    { "data": "Name", "orderable": false },
-                    { "data": "Gender", "orderable": true },
-                    { "data": "Id", "orderable": false },
-                    { "data": "BirthDate", "orderable": true },
-                    { "data": "ModifiedDate", "orderable": true }
-                ]
-            });
-        }
-
-        return {
-
-            //main function to initiate the module
-            init: function () {
-
-                if (!jQuery().dataTable) {
-                    console.log("already initialized dataTable!");
-                    return;
-                }
-                console.log("initialized dataTable!");
-                init();
-            }
-        };
-    }();
-
-    jQuery(document).ready(function () {
-
-        alert("ekmek");
-
-        $(".btn.blue").click(function (event) {
-            event.preventDefault();
-            alert("hop");
-            TableDatatablesColreorder.init();
-        });
-
-
-        $(".btn.default").click(function () {
-            var table = $('#first-sample').DataTable();
-            table.destroy();
-            $('#first-sample tbody,#first-sample tfoot tr th').empty();
-        });
-
-    });
-
-    </script>
-}
-
-
-
-
 
 
 @*<div class="table-responsive fsis-table">

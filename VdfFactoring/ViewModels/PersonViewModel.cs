@@ -43,13 +43,14 @@ namespace VdfFactoring.ViewModels
         [DataGridColumn("Cinsiyet")]
         public string Gender { get; set; }
 
+        [DataGridColumn("id bilgisi",Visible=false)]
         public int Id { get; set; }
 
         [DataGridColumn("Doğum Tarihi", DataFormat = ColumnDataFormat.Date)]
-        public DateTime BirthDate { get; set; }
+        public string BirthDate { get; set; }
 
         [DataGridColumn("Değitirme Tarihi", DataFormat = ColumnDataFormat.Date)]
-        public DateTime ModifiedDate { get; set; }
+        public string ModifiedDate { get; set; }
 
     }
 }

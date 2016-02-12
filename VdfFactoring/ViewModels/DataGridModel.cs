@@ -2,7 +2,9 @@
 
 namespace VdfFactoring.ViewModels
 {
-
+    /// <summary>
+    /// request query string class for dataTables.js
+    /// </summary>
     public class DataGridRequestQueryString
     {
         public int start { get; set; }
@@ -13,6 +15,9 @@ namespace VdfFactoring.ViewModels
         public string orderBy { get; set; }  //asc - desc?
     }
 
+    /// <summary>
+    /// response class for dataTables.js 
+    /// </summary>
     public class DataGridResponse
     {
         public int draw { get; set; }
@@ -22,6 +27,9 @@ namespace VdfFactoring.ViewModels
         public List<SimplePersonViewModel> data { get; set; }
     }
 
+    /// <summary>
+    /// order types for dataTables.js
+    /// </summary>
     public enum DataGridOrderType
     {
         Asc,

@@ -44,8 +44,8 @@ namespace VdfFactoring.Controllers
             {
                 p = new SimplePersonViewModel()
                 {
-                    BirthDate = DateTime.Now.AddDays(-1000 + i),
-                    ModifiedDate = DateTime.Now.AddDays(-2000 + i),
+                    BirthDate = DateTime.Now.AddDays(-1000 + i).ToShortDateString(),
+                    ModifiedDate = DateTime.Now.AddDays(-2000 + i).ToShortDateString(),
                     Salary = i + 10.5,
                     Gender = "E",
                     Id = i,

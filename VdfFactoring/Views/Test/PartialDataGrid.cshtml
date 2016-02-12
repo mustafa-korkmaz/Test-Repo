@@ -74,7 +74,7 @@
                     </div>
                     <div class="form-actions right">
                         <button type="button" class="btn default">Temizle</button>
-                        <button type="submit" class="btn blue">
+                        <button type="submit" class="btn blue" id="submit-button">
                             <i class="fa fa-check"></i> Listele
                         </button>
                     </div>
@@ -87,3 +87,19 @@
 </div>
 
 @Html.Partial("_DataGrid", Model.SampleGrid)
+
+@section Scripts{
+    <script type="text/javascript">
+
+    $("#submit-button").click(function (event) {
+        event.preventDefault();
+        var summaryColumns= JSON.parse('@Html.Raw(Model.SampleGrid.SummaryColumns)');
+        var bodyColumns= JSON.parse('@Html.Raw(Model.SampleGrid.BodyColumns)');
+        var dataGrid = new DataGrid('#@Model.SampleGrid.DataGrid.Id', bodyColumns, summaryColumns, '@Url.Action("FillDataGrid", "DataGrid")', null);
+        dataGrid.initialize();
+        });
+
+
+</script>
+    
+    }

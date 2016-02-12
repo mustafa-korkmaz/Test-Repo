@@ -75,7 +75,8 @@ namespace VdfFactoring
                        "~/Content/assets/layouts/layout/scripts/demo.min.js",
                        "~/Content/assets/layouts/global/scripts/quick-sidebar.min.js",
                        "~/Content/assets/global/plugins/datatables/datatables.min.js",
-                       "~/Content/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"//END THEME LAYOUT SCRIPTS
+                       "~/Content/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js",
+                       "~/Scripts/shared/dataGrid.js"//END THEME LAYOUT SCRIPTS
                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/metronicJsForIE").Include(

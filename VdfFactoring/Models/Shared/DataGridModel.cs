@@ -17,12 +17,7 @@ namespace VdfFactoring.Models
     {
         #region Properties
 
-        private List<int> _summaryColumnsList
-        {
-            get { return DataGrid.Columns.Where(c => c.UseInSummaryColumns).Select(p => p.ColumnIndex).ToList(); }
-        }
-
-   //     public DataExportModel DataExportModel { get; set; }
+        //     public DataExportModel DataExportModel { get; set; }
 
         public DataGrid DataGrid { get; set; }
 
@@ -38,12 +33,30 @@ namespace VdfFactoring.Models
 
         }
 
-        public string SummaryColumns
+        /// <summary>
+        /// table body columns fieldName and orderable property json format for dataTables.js integration
+        /// </summary>
+        public string BodyColumns
         {
-            get { return JsonConvert.SerializeObject(this._summaryColumnsList); }
+            get
+            {
+                var bodyColumnsQuery = DataGrid.Columns.Where(c => c.IsVisible).Select(p => new { data = p.FieldName, orderable = p.IsOrderable });
+                return JsonConvert.SerializeObject(bodyColumnsQuery.ToList());
+            }
         }
 
-        //js dosyasına bu listeyi gönderip bu kolonlarda total summary yaptıracagız
+        /// <summary>
+        /// summaryColumns json format for dataTables.js integration
+        /// </summary>
+        public string SummaryColumns
+        {
+            get
+            {
+                var summaryColumnsQuery = DataGrid.Columns.Where(c => c.UseInSummaryColumns).Select(p => p.ColumnIndex);
+                return JsonConvert.SerializeObject(summaryColumnsQuery.ToList());
+            }
+        }
+
 
         #endregion Properties
 
@@ -66,7 +79,7 @@ namespace VdfFactoring.Models
             {
                 DataGrid.Name = dataGridAttribute.Name;
                 DataGrid.ShowFooter = dataGridAttribute.ShowFooter;
-              //  DataGrid.ShowSearchSection = dataGridAttribute.ShowSearchSection;
+                //  DataGrid.ShowSearchSection = dataGridAttribute.ShowSearchSection;
                 DataGrid.IsRowsCheckable = dataGridAttribute.RowsCheckable;
                 DataGrid.IsRowsDeletable = dataGridAttribute.RowsDeletable;
                 DataGrid.DeleteText = dataGridAttribute.DeleteText;
@@ -76,17 +89,6 @@ namespace VdfFactoring.Models
                 DataGrid.PagingType = dataGridAttribute.PagingType;
             }
         }
-        //public static string GetName(Expression<Func<object>> exp)
-        //{
-        //    MemberExpression body = exp.Body as MemberExpression;
 
-        //    if (body == null)
-        //    {
-        //        UnaryExpression ubody = (UnaryExpression)exp.Body;
-        //        body = ubody.Operand as MemberExpression;
-        //    }
-
-        //    return body.Member.Name;
-        //}
     }
 }
