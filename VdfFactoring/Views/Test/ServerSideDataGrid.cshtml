@@ -94,8 +94,9 @@
     $("#submit-button").click(function (event) {
         event.preventDefault();
         var summaryColumns= JSON.parse('@Html.Raw(Model.SampleGrid.SummaryColumns)');
-        var bodyColumns= JSON.parse('@Html.Raw(Model.SampleGrid.BodyColumns)');
-        var dataGrid = new DataGrid('#@Model.SampleGrid.DataGrid.Id', bodyColumns, summaryColumns, '@Url.Action("FillDataGrid", "DataGrid")', null);
+        var bodyColumns = JSON.parse('@Html.Raw(Model.SampleGrid.BodyColumns)');
+        var rowactions = JSON.parse('@Html.Raw(Model.SampleGrid.RowActions)');
+        var dataGrid = new DataGrid('#@Model.SampleGrid.DataGrid.Id', bodyColumns, summaryColumns, '@Url.Action("FillDataGrid", "Test")', rowactions);
         dataGrid.initialize();
         });
 

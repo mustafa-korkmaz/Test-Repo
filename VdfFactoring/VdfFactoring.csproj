@@ -5981,7 +5981,7 @@
     <Content Include="Views\Shared\_PageSideBar.cshtml" />
     <Content Include="Views\Shared\_MetronicLayout - backUp.cshtml" />
     <Content Include="Views\Test\DataGridSample.cshtml" />
-    <Content Include="Views\Test\PartialDataGrid.cshtml" />
+    <Content Include="Views\Test\ServerSideDataGrid.cshtml" />
     <Content Include="Views\Shared\_DataGrid.cshtml" />
     <Content Include="Views\Shared\_DataGridSearch.cshtml" />
   </ItemGroup>

@@ -10,6 +10,11 @@
         @Html.Partial("_DataGridSearch", Model.DataGrid.DataSearchColumnList)
     }*@
 
+@{
+    int visibleColumnCount = Model.DataGrid.Columns.Count(c => c.Visible);
+    bool hasActionButtons = (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable);
+    int totalColumnCount = hasActionButtons ? visibleColumnCount + 1 : visibleColumnCount;
+}
 
 <div class="row">
     <div class="col-md-12">
@@ -37,41 +42,45 @@
                             @{
                                 foreach (var column in Model.DataGrid.Columns)
                                 {
-                                    if (column.IsVisible)
+                                    if (column.Visible)
                                     {
                                         <th>@column.DisplayName</th>
                                     }
                                 }
-                                @*if (Model.DataGrid.IsRowsEditable || Model.DataGrid.IsRowsDeletable) //generate edit-delete buttons for grid
+                                if (hasActionButtons) //generate edit-delete buttons for grid
+                                {
+                                    if (Model.DataGrid.IsRowsEditable)
                                     {
-                                        if (Model.DataGrid.IsRowsEditable)
-                                        {
-                                            <th>
-                                                @Model.DataGrid.EditText
-                                            </th>
-                                        }
-                                        else
-                                        {
-                                            <th>
-                                                @Model.DataGrid.DeleteText
-                                            </th>
-                                        }
-                                    }*@
+                                        <th>
+                                            @Model.DataGrid.EditText
+                                        </th>
+                                    }
+                                    else
+                                    {
+                                        <th>
+                                            @Model.DataGrid.DeleteText
+                                        </th>
+                                    }
+                                }
                             }
 
                         </tr>
                     </thead>
-
-                    <tfoot>
-                        <tr>
-                            @{
-                                for (int i = 0; i < Model.DataGrid.Columns.Where(c => c.IsVisible).Count(); i++)
-                                {
-                                    <th></th>
-                                }
+                    @{
+                        if (Model.HasSummaryColumns)
+                        {
+                            <tfoot>
+                                <tr>
+                                    @{
+                            for (int i = 0; i < totalColumnCount; i++)
+                            {
+                                <th></th>
                             }
-                        </tr>
-                    </tfoot>
+                                    }
+                                </tr>
+                            </tfoot>
+                        }
+                    }
                 </table>
 
             </div>

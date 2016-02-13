@@ -6,12 +6,12 @@ namespace Common.UIElements
 {
     public class DataGridColumn
     {
-        private string fieldName;// non editable property name of a class
+        private string _fieldName;// non editable property name of a class
 
-        public bool IsVisible { get; set; }
-        public bool IsOrderable { get; set; }
+        public bool Visible { get; set; }
+        public bool Orderable { get; set; }
         public DataGridSearch DataGridSearch { get; set; }
-        public bool UseInSummaryColumns { get; set; } // for getting column summary totals
+        public bool UseInSummary { get; set; } // for getting column summary totals
         public bool ShowInDataExport { get; set; } //may be we want to export data for a hidden column
         public string DisplayName { get; set; } // column display name
         public int ColumnIndex { get; internal set; }
@@ -22,30 +22,33 @@ namespace Common.UIElements
         /// DataGrid object which DataGridColumn belongs to.
         /// </summary>
         public DataGrid DataGrid { get; internal set; }
-        public string FieldName { get { return this.fieldName; } }
+        public string FieldName { get { return _fieldName; } }
 
 
         private DataGridColumn(string fieldName, ColumnDataFormat dataFormat, ColumnDataType dataType)
         {
-            this.fieldName = fieldName;
-            this.DisplayName = fieldName; // fieldName== displayName by default
-            this.DataFormat = dataFormat;
-            this.DataType = dataType;
-            this.UseInSummaryColumns = false;
-            this.IsVisible = true;
-            this.ShowInDataExport = true;
+            _fieldName = fieldName;
+            DisplayName = fieldName; // fieldName== displayName by default
+            DataFormat = dataFormat;
+            DataType = dataType;
+            UseInSummary = false;
+            Visible = true;
+            ShowInDataExport = true;
+            Orderable = false;
         }
 
         private DataGridColumn(int columnIndex, string fieldName, string displayName, ColumnDataFormat dataFormat, ColumnDataType dataType)
         {
-            this.ColumnIndex = columnIndex;
-            this.DisplayName = displayName;
-            this.fieldName = fieldName;
-            this.DataFormat = dataFormat;
-            this.DataType = dataType;
-            this.UseInSummaryColumns = false;
-            this.IsVisible = true;
-            this.ShowInDataExport = true;
+            _fieldName = fieldName;
+
+            ColumnIndex = columnIndex;
+            DisplayName = displayName;
+            DataFormat = dataFormat;
+            DataType = dataType;
+            UseInSummary = false;
+            Visible = true;
+            ShowInDataExport = true;
+            Orderable = false;
         }
 
         public static DataGridColumn Create(string fieldName, ColumnDataFormat dataFormat = ColumnDataFormat.Default, ColumnDataType dataType = ColumnDataType.Text)
@@ -64,16 +67,16 @@ namespace Common.UIElements
         private List<DataGridColumn> _columns;
         public DataGridColumn this[int index]
         {
-            get { return this._columns[index]; }
+            get { return _columns[index]; }
         }
         public DataGridColumn this[string fieldName]
         {
-            get { return this._columns.Find(c => c.FieldName == fieldName); }
+            get { return _columns.Find(c => c.FieldName == fieldName); }
         }
         public DataGridColumnCollection(DataGrid dataGrid)
         {
-            this._dataGrid = dataGrid;
-            this._columns = new List<DataGridColumn>();
+            _dataGrid = dataGrid;
+            _columns = new List<DataGridColumn>();
         }
 
         public void Add(DataGridColumn column)
@@ -83,19 +86,19 @@ namespace Common.UIElements
         }
         public bool Remove(DataGridColumn column)
         {
-            return this._columns.Remove(column);
+            return _columns.Remove(column);
         }
         public void RemoveAt(int columnIndex)
         {
-            this._columns.RemoveAt(columnIndex);
+            _columns.RemoveAt(columnIndex);
         }
         IEnumerator<DataGridColumn> IEnumerable<DataGridColumn>.GetEnumerator()
         {
-            return this._columns.GetEnumerator();
+            return _columns.GetEnumerator();
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this._columns.GetEnumerator();
+            return _columns.GetEnumerator();
         }
     }
 }

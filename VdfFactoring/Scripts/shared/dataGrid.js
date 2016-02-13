@@ -15,7 +15,7 @@ function DataGrid(tableSelector, bodyColumns, summaryColumns, url, rowActions) {
      {"0","2,"4"}
 
     sample rowActions:
-    {"delete":"false","edit":"true"}*/
+    {"deletable":"false","editable":"true"}*/
 
     this.tableSelector = tableSelector;
     this.bodyColumns = bodyColumns;
@@ -27,15 +27,18 @@ function DataGrid(tableSelector, bodyColumns, summaryColumns, url, rowActions) {
 //initializes a dataTable object
 DataGrid.prototype.initialize = function () {
 
-    console.log("DataGrid.initiliazeDataTable:" + this.tableSelector + " bodyColumns object:" + this.bodyColumns + " summaryColumns object:" + this.summaryColumns + " URL: " + this.url);
+    console.log("DataGrid.initiliazeDataTable:" + this.tableSelector + " bodyColumns object:" + this.bodyColumns + " summaryColumns object:" + this.summaryColumns + " URL: " + this.url + "actions:" + this.rowActions);
 
-    var tableSelector = this.tableSelector;
-    var bodyColumns = this.bodyColumns;
     var summaryColumns = this.summaryColumns;
-    var url = this.url;
-    var rowActions = this.rowActions;
 
-    $(tableSelector).DataTable({
+    if (this.rowActions["deletable"] === true || this.rowActions["editable"] === true) {
+
+        var oColumn = { "data": "Actions", "orderable": false }
+        this.bodyColumns.push(oColumn);
+
+    }
+
+    $(this.tableSelector).DataTable({
         "emptyTable": "No data available in table",
         "zeroRecords": "No matching records found",
         "bFilter": false, //remove search text box
@@ -59,18 +62,25 @@ DataGrid.prototype.initialize = function () {
                 return result;
             }
 
-            // Total over this page
-            pageTotal = api
-                .column(5, { page: 'current' })
-                .data()
-                .reduce(function (a, b) {
-                    return getFloatValue(a) + getFloatValue(b);
-                }, 0);
+            if (summaryColumns.length > 0) { // start to generate summary columns
 
-            // Update footer
-            $(api.column(5).footer()).html(
-                pageTotal.toFixed(2)
-            );
+                summaryColumns.forEach(
+                    function CalculateFooter(value) {
+                        // Total over this page
+                        pageTotal = api
+                            .column(value, { page: 'current' })
+                            .data()
+                            .reduce(function (a, b) {
+                                return getFloatValue(a) + getFloatValue(b);
+                            }, 0);
+
+                        // Update footer
+                        pageTotal = parseFloat(Math.round(pageTotal * 100) / 100).toFixed(2); // only two digits after comma
+                        $(api.column(value).footer()).html(
+                            pageTotal
+                        );
+                    });
+            }
         },
         "columns": this.bodyColumns
     });

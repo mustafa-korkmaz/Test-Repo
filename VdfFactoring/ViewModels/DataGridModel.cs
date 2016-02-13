@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace VdfFactoring.ViewModels
 {
@@ -23,8 +24,7 @@ namespace VdfFactoring.ViewModels
         public int draw { get; set; }
         public int recordsTotal { get; set; }
         public int recordsFiltered { get; set; }
-        //public List<CustomerModel> data { get; set; }
-        public List<SimplePersonViewModel> data { get; set; }
+        public IEnumerable data { get; set; }
     }
 
     /// <summary>

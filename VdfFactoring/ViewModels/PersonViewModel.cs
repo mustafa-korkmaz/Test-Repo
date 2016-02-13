@@ -34,16 +34,16 @@ namespace VdfFactoring.ViewModels
 
     public class SimplePersonViewModel
     {
-        [DataGridColumn("Ücret", DataFormat = ColumnDataFormat.Money)]
+        [DataGridColumn("Ücret", DataFormat = ColumnDataFormat.Money, UseInSummary = true,Orderable = true)]
         public double Salary { get; set; }
 
-        [DataGridColumn("İsim", DataFormat = ColumnDataFormat.Default)]
+        [DataGridColumn("İsim", DataFormat = ColumnDataFormat.Default,Orderable = true)]
         public string Name { get; set; }
 
         [DataGridColumn("Cinsiyet")]
         public string Gender { get; set; }
 
-        [DataGridColumn("id bilgisi",Visible=false)]
+        [DataGridColumn("id bilgisi", UseInSummary = true)]
         public int Id { get; set; }
 
         [DataGridColumn("Doğum Tarihi", DataFormat = ColumnDataFormat.Date)]

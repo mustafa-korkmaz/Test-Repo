@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Pjax.Mvc5;
 using VdfFactoring.ViewModels;
@@ -24,12 +25,14 @@ namespace VdfFactoring.Controllers
             return View();
         }
 
+
+        #region DataGrid Sample
         public ActionResult DataGridSample()
         {
             return View();
         }
 
-        public ActionResult PartialDataGrid()
+        public ActionResult ServerSideDataGrid()
         {
             DataGridTestModel model = new DataGridTestModel();
             model.SampleGrid = SetSampleDataGridModel();
@@ -39,15 +42,44 @@ namespace VdfFactoring.Controllers
 
         private DataGridModel SetSampleDataGridModel()
         {
-            var pList = GetSimplePersonViewList();
+            var pList = GetData(new DataGridRequestQueryString());
             //   var pList = GetComplexPersonViewList();
             var model = new DataGridModel(pList, "Sample dynamic data grid");
 
             return model;
         }
 
-        private List<SimplePersonViewModel> GetSimplePersonViewList()
+        /// <summary>
+        /// xhr method that works with dataTables.js server side table
+        /// </summary>
+        /// <param name="queryString"></param>
+        /// <returns></returns>
+        public ActionResult FillDataGrid(DataGridRequestQueryString queryString)
         {
+            queryString.orderedColumnIndex = Int32.Parse(Request.QueryString["order[0][column]"]);
+
+            var columnNameIdentifier = string.Format("columns[{0}][data]", queryString.orderedColumnIndex);
+            queryString.orderedColumnName = Request.QueryString[columnNameIdentifier];
+
+            queryString.orderBy = Request.QueryString["order[0][dir]"];
+
+            DataGridResponse resp = new DataGridResponse
+            {
+                draw = queryString.draw,
+                data = GetData(queryString),
+                recordsFiltered = 100,
+                recordsTotal = 100,
+            };
+
+            return Json(resp, JsonRequestBehavior.AllowGet);
+        }
+
+        private List<SimplePersonViewModel> GetData(DataGridRequestQueryString queryString)
+        {
+            if (queryString.length==0)
+            {
+                queryString.length = 1;
+            }
             List<SimplePersonViewModel> pList = new List<SimplePersonViewModel>();
 
             SimplePersonViewModel p = new SimplePersonViewModel();
@@ -56,20 +88,23 @@ namespace VdfFactoring.Controllers
             {
                 p = new SimplePersonViewModel()
                 {
-                    BirthDate = DateTime.Now.AddDays(-1000 + i).ToShortDateString(),
-                    ModifiedDate = DateTime.Now.AddDays(-2000 + i).ToShortDateString(),
                     Salary = i + 10.5,
+                    Name = "My name is " + (i + 1),
                     Gender = "E",
                     Id = i,
-                    Name = "My name is " + (i + 1)
+                    BirthDate = DateTime.Now.AddDays(-1000 + i).ToShortDateString(),
+                    ModifiedDate = DateTime.Now.AddDays(-2000 + i).ToShortDateString(),
                 };
 
                 pList.Add(p);
             }
-            return pList;
+            return pList.Skip(queryString.start).Take(queryString.length).ToList();
         }
 
+        #endregion DataGrid Sample
 
+
+        #region pjax
 
         public bool IsPjaxRequest
         {
@@ -82,5 +117,7 @@ namespace VdfFactoring.Controllers
             get;
             set;
         }
+
+        #endregion pjax
     }
 }

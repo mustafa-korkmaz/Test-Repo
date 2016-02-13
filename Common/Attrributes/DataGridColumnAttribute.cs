@@ -9,41 +9,49 @@ namespace Common.Attributes
     /// </summary>
     public class DataGridColumnAttribute : Attribute
     {
-        private bool visible;
-        private bool sortable;
+        private bool _visible;
+        private bool _orderable;
         //private bool searchable;
         //private string searchLabel;
-        private string displayName;
-        private ColumnDataFormat dataFormat;
-        private ColumnDataType dataType;
-      //  private DataGridSearch dataGridSearch;
+        private string _displayName;
+        private bool _useInSummary;
+        private ColumnDataFormat _dataFormat;
+        private ColumnDataType _dataType;
+        //  private DataGridSearch dataGridSearch;
 
         public DataGridColumnAttribute(string displayName)
         {
-            this.visible = true;
-            this.sortable = false;
-            this.displayName = displayName;
-            this.dataFormat = ColumnDataFormat.Default;
-            this.dataType = ColumnDataType.Text;
+            _visible = true;
+            _orderable = false;
+            _displayName = displayName;
+            _dataFormat = ColumnDataFormat.Default;
+            _dataType = ColumnDataType.Text;
+            _useInSummary = false;
         }
 
         public DataGridColumnAttribute()
         {
-            this.visible = true;
-            this.dataFormat = ColumnDataFormat.Default;
-            this.dataType = ColumnDataType.Text;
+            _visible = true;
+            _dataFormat = ColumnDataFormat.Default;
+            _dataType = ColumnDataType.Text;
         }
 
         public virtual bool Visible
         {
-            get { return visible; }
-            set { visible = value; }
+            get { return _visible; }
+            set { _visible = value; }
         }
 
-        public virtual bool Sortable
+        public virtual bool Orderable
         {
-            get { return sortable; }
-            set { sortable = value; }
+            get { return _orderable; }
+            set { _orderable = value; }
+        }
+
+        public virtual bool UseInSummary
+        {
+            get { return _useInSummary; }
+            set { _useInSummary = value; }
         }
 
         //public virtual bool Searchable
@@ -60,20 +68,20 @@ namespace Common.Attributes
 
         public virtual string DisplayName
         {
-            get { return displayName; }
-            set { displayName = value; }
+            get { return _displayName; }
+            set { _displayName = value; }
         }
 
         public virtual ColumnDataFormat DataFormat
         {
-            get { return dataFormat; }
-            set { dataFormat = value; }
+            get { return _dataFormat; }
+            set { _dataFormat = value; }
         }
 
         public virtual ColumnDataType DataType
         {
-            get { return dataType; }
-            set { dataType = value; }
+            get { return _dataType; }
+            set { _dataType = value; }
         }
     }
 }

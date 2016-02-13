@@ -40,23 +40,42 @@ namespace VdfFactoring.Models
         {
             get
             {
-                var bodyColumnsQuery = DataGrid.Columns.Where(c => c.IsVisible).Select(p => new { data = p.FieldName, orderable = p.IsOrderable });
+                var bodyColumnsQuery = DataGrid.Columns.Where(c => c.Visible).Select(p => new { data = p.FieldName, orderable = p.Orderable });
                 return JsonConvert.SerializeObject(bodyColumnsQuery.ToList());
             }
         }
+
+        private string _summaryColumns;
 
         /// <summary>
         /// summaryColumns json format for dataTables.js integration
         /// </summary>
         public string SummaryColumns
         {
+            get { return _summaryColumns; }
+        }
+
+        public bool HasSummaryColumns
+        {
             get
             {
-                var summaryColumnsQuery = DataGrid.Columns.Where(c => c.UseInSummaryColumns).Select(p => p.ColumnIndex);
-                return JsonConvert.SerializeObject(summaryColumnsQuery.ToList());
+                var summaryColumnsQuery = DataGrid.Columns.Where(c => c.UseInSummary).Select(p => p.ColumnIndex);
+                _summaryColumns = JsonConvert.SerializeObject(summaryColumnsQuery.ToList());
+                return summaryColumnsQuery.Any();
             }
         }
 
+        /// <summary>
+        /// table action columns f  json format for dataTables.js integration  eg: {"deletable":"false","editable":"true"}
+        /// </summary>
+        public string RowActions
+        {
+            get
+            {
+                var rowActions = new { deletable = DataGrid.IsRowsDeletable, editable = DataGrid.IsRowsEditable };
+                return JsonConvert.SerializeObject(rowActions);
+            }
+        }
 
         #endregion Properties
 

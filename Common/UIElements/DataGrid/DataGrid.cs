@@ -97,7 +97,9 @@ namespace Common.UIElements
                         c.DisplayName = dataColumnAttribute.DisplayName;
                         c.DataFormat = dataColumnAttribute.DataFormat;
                         c.DataType = dataColumnAttribute.DataType;
-                        c.IsVisible = dataColumnAttribute.Visible;
+                        c.Visible = dataColumnAttribute.Visible;
+                        c.Orderable = dataColumnAttribute.Orderable;
+                        c.UseInSummary = dataColumnAttribute.UseInSummary;
                     }
                     c.ColumnIndex = c.DisplayIndex = index++;
                     this.Columns.Add(c);

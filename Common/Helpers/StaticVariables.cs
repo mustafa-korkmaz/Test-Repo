@@ -48,7 +48,7 @@ namespace Common.Helpers
                 new Breadcrumb(){Id=29,ParentId=26,ControllerName="home",ActionName="page1",ViewTitle="Page1", BackButtonText=""},
                 new Breadcrumb(){Id=30,ParentId=26,ControllerName="home",ActionName="page2",ViewTitle="Page2", BackButtonText=""},
                 new Breadcrumb(){Id=31,ParentId=26,ControllerName="test",ActionName="datagridsample",ViewTitle="Data Grid Sample", BackButtonText=""},
-                  new Breadcrumb(){Id=32,ParentId=26,ControllerName="test",ActionName="partialdatagrid",ViewTitle="Partial Data Grid Sample", BackButtonText=""}
+                  new Breadcrumb(){Id=32,ParentId=26,ControllerName="test",ActionName="serversidedatagrid",ViewTitle="Partial Data Grid Sample", BackButtonText=""}
                 };
             }
         }
