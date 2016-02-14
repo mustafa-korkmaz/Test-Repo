@@ -181,7 +181,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="ViewModels\CustomerModel.cs" />
-    <Compile Include="ViewModels\DataGridModel.cs" />
+    <Compile Include="ViewModels\DataGridViewModel.cs" />
     <Compile Include="Models\Shared\DataGridModel.cs" />
     <Compile Include="ViewModels\DataGridTestModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
@@ -5537,8 +5537,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\assets\global\img\social\Thumbs.db" />
     <Content Include="Content\assets\global\plugins\amcharts\amcharts\plugins\dataloader\examples\data\gauge.json" />
     <Content Include="Content\assets\global\plugins\amcharts\amcharts\plugins\dataloader\examples\data\map.json" />
@@ -5904,7 +5902,6 @@
     <Content Include="Content\assets\layouts\layout7\img\Thumbs.db" />
     <Content Include="Content\assets\pages\media\blog\Thumbs.db" />
     <Content Include="Content\assets\pages\media\pages\Thumbs.db" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\common\ajaxHelper.js" />
     <Content Include="Scripts\common\contentLoader.js" />
     <Content Include="Scripts\common\global.js" />
@@ -5913,19 +5910,7 @@
     <Content Include="Scripts\common\userMessage.js" />
     <Content Include="Scripts\form\ajaxForm.js" />
     <Content Include="Scripts\form\validator.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.pjax-1.9.6.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\shared\dataGrid.js" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -5940,7 +5925,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />

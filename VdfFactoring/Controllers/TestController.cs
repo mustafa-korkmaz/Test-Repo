@@ -13,39 +13,23 @@ namespace VdfFactoring.Controllers
     public class TestController : BaseController, IPjax
     {
 
-        public ActionResult Pjax1()
-        {
-            System.Threading.Thread.Sleep(1500);
-            return View();
-        }
-
-        public ActionResult Pjax2()
-        {
-            ViewBag.Title = "Pjax2";
-            return View();
-        }
-
-
         #region DataGrid Sample
-        public ActionResult DataGridSample()
-        {
-            return View();
-        }
-
         public ActionResult ServerSideDataGrid()
         {
             DataGridTestModel model = new DataGridTestModel();
-            model.SampleGrid = SetSampleDataGridModel();
+            model.SampleGrid = InitializeGrid();
 
             return View(model);
         }
 
-        private DataGridModel SetSampleDataGridModel()
+        /// <summary>
+        ///  there is no data in grid but we want to show it in page with column names and table name.
+        /// </summary>
+        /// <returns></returns>
+        private DataGridModel InitializeGrid()
         {
-            var pList = GetData(new DataGridRequestQueryString());
-            //   var pList = GetComplexPersonViewList();
+            var pList = new List<SimplePersonViewModel>();
             var model = new DataGridModel(pList, "Sample dynamic data grid");
-
             return model;
         }
 
@@ -56,30 +40,20 @@ namespace VdfFactoring.Controllers
         /// <returns></returns>
         public ActionResult FillDataGrid(DataGridRequestQueryString queryString)
         {
-            queryString.orderedColumnIndex = Int32.Parse(Request.QueryString["order[0][column]"]);
-
-            var columnNameIdentifier = string.Format("columns[{0}][data]", queryString.orderedColumnIndex);
-            queryString.orderedColumnName = Request.QueryString[columnNameIdentifier];
-
-            queryString.orderBy = Request.QueryString["order[0][dir]"];
-
-            DataGridResponse resp = new DataGridResponse
-            {
-                draw = queryString.draw,
-                data = GetData(queryString),
-                recordsFiltered = 100,
-                recordsTotal = 100,
-            };
+            DataGridResponseViewModel resp = GetResponse(queryString);
 
             return Json(resp, JsonRequestBehavior.AllowGet);
         }
 
-        private List<SimplePersonViewModel> GetData(DataGridRequestQueryString queryString)
+        /// <summary>
+        /// assume that tihs data comes from business layer.
+        /// </summary>
+        /// <param name="queryString"></param>
+        /// <returns></returns>
+        private DataGridResponseViewModel GetResponse(DataGridRequestQueryString queryString)
         {
-            if (queryString.length==0)
-            {
-                queryString.length = 1;
-            }
+            DataGridResponseViewModel model = new DataGridResponseViewModel(queryString);
+
             List<SimplePersonViewModel> pList = new List<SimplePersonViewModel>();
 
             SimplePersonViewModel p = new SimplePersonViewModel();
@@ -98,7 +72,10 @@ namespace VdfFactoring.Controllers
 
                 pList.Add(p);
             }
-            return pList.Skip(queryString.start).Take(queryString.length).ToList();
+            model.data = pList.Skip(queryString.start).Take(queryString.length).ToList();
+            model.recordsTotal = pList.Count;
+
+            return model;
         }
 
         #endregion DataGrid Sample

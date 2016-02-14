@@ -21,18 +21,6 @@ namespace VdfFactoring.Models
 
         public DataGrid DataGrid { get; set; }
 
-        public Type _sourceModelType;
-
-        public Type SourceModelType
-        {
-            set
-            {
-                this._sourceModelType = value;
-                SetDataGridProperties();
-            }
-
-        }
-
         /// <summary>
         /// table body columns fieldName and orderable property json format for dataTables.js integration
         /// </summary>
@@ -66,13 +54,13 @@ namespace VdfFactoring.Models
         }
 
         /// <summary>
-        /// table action columns f  json format for dataTables.js integration  eg: {"deletable":"false","editable":"true"}
+        /// table action columns f  json format for dataTables.js integration  eg: {"deletable":"false","editable":"true", defaultContent:""}
         /// </summary>
         public string RowActions
         {
             get
             {
-                var rowActions = new { deletable = DataGrid.IsRowsDeletable, editable = DataGrid.IsRowsEditable };
+                var rowActions = new { deletable = DataGrid.IsRowsDeletable, editable = DataGrid.IsRowsEditable, defaultContent = "" };
                 return JsonConvert.SerializeObject(rowActions);
             }
         }
@@ -88,26 +76,5 @@ namespace VdfFactoring.Models
         }
 
         #endregion Constructor
-
-        private void SetDataGridProperties()
-        {
-            var pi = _sourceModelType.GetProperties().FirstOrDefault(p => p.PropertyType.Name == "DataGridModel");
-            var customAttributes = pi.GetCustomAttributes(true);
-            var dataGridAttribute = (customAttributes.Any() ? customAttributes[0] : null) as DataGridAttribute;
-            if (dataGridAttribute != null)
-            {
-                DataGrid.Name = dataGridAttribute.Name;
-                DataGrid.ShowFooter = dataGridAttribute.ShowFooter;
-                //  DataGrid.ShowSearchSection = dataGridAttribute.ShowSearchSection;
-                DataGrid.IsRowsCheckable = dataGridAttribute.RowsCheckable;
-                DataGrid.IsRowsDeletable = dataGridAttribute.RowsDeletable;
-                DataGrid.DeleteText = dataGridAttribute.DeleteText;
-                DataGrid.IsRowsEditable = dataGridAttribute.RowsEditable;
-                DataGrid.EditText = dataGridAttribute.EditText;
-                DataGrid.EdittingRowDataLoadType = dataGridAttribute.EdittingRowDataLoadType;
-                DataGrid.PagingType = dataGridAttribute.PagingType;
-            }
-        }
-
     }
 }

@@ -1,14 +1,4 @@
 ﻿@model VdfFactoring.Models.DataGridModel
-@*
-
-    @using Common.Helpers
-    @using Common.UIElements
-    @using FSIS.Models*@
-
-@*@if (Model.DataGrid.ShowSearchSection && Model.DataGrid.DataSearchColumnList.Any())
-    {
-        @Html.Partial("_DataGridSearch", Model.DataGrid.DataSearchColumnList)
-    }*@
 
 @{
     int visibleColumnCount = Model.DataGrid.Columns.Count(c => c.Visible);
@@ -22,7 +12,7 @@
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>Column Reordering
+                    <i class="fa fa-globe"></i>@Model.DataGrid.Name
                 </div>
                 <div class="tools"> </div>
             </div>
@@ -88,6 +78,7 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 </div>
+
 
 
 @*<div class="table-responsive fsis-table">

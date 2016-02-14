@@ -19,7 +19,7 @@ namespace Common.UIElements
             {
                 return this.CellArray.Find(c => c.Column.FieldName == this.IdColumnName).Value.ToString();
             }
-        } 
+        }
         public bool IsVisible { get; set; }
         public string Name { get; set; } // HTML Dom element name attribute
         public List<DataGridCell> CellArray { get; private set; } // System.Data.DataTable.Rows.ItemArray logic
@@ -44,35 +44,35 @@ namespace Common.UIElements
         private List<DataGridRow> _rows;
         public DataGridRow this[int index]
         {
-            get { return this._rows[index]; }
+            get { return _rows[index]; }
         }
 
         public DataGridRowCollection(DataGrid dataGrid)
         {
-            this._dataGrid = dataGrid;
-            this._rows = new List<DataGridRow>();
+            _dataGrid = dataGrid;
+            _rows = new List<DataGridRow>();
         }
 
         public void Add(DataGridRow row)
         {
-            this._rows.Add(row);
+            _rows.Add(row);
             row.DataGrid = this._dataGrid;
         }
         public bool Remove(DataGridRow row)
         {
-            return this._rows.Remove(row);
+            return _rows.Remove(row);
         }
         public void RemoveAt(int columnIndex)
         {
-            this._rows.RemoveAt(columnIndex);
+            _rows.RemoveAt(columnIndex);
         }
         IEnumerator<DataGridRow> IEnumerable<DataGridRow>.GetEnumerator()
         {
-            return this._rows.GetEnumerator();
+            return _rows.GetEnumerator();
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this._rows.GetEnumerator();
+            return _rows.GetEnumerator();
         }
     }
 

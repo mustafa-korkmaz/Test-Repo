@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using VdfFactoring.ViewModels;
-using VdfFactoring.ViewModels;
 
 namespace VdfFactoring.Controllers
 {
@@ -15,19 +14,9 @@ namespace VdfFactoring.Controllers
         /// <returns></returns>
         public ActionResult FillDataGrid(DataGridRequestQueryString queryString)
         {
-            queryString.orderedColumnIndex = Int32.Parse(Request.QueryString["order[0][column]"]);
-
-            var columnNameIdentifier = string.Format("columns[{0}][data]", queryString.orderedColumnIndex);
-            queryString.orderedColumnName = Request.QueryString[columnNameIdentifier];
-
-            queryString.orderBy = Request.QueryString["order[0][dir]"];
-
-            DataGridResponse resp = new DataGridResponse
+            var resp = new DataGridResponseViewModel(queryString)
             {
-                draw = queryString.draw,
-                data = new CustomerDataGenerator().GenerateCustomerList(queryString),
-                recordsFiltered = 100,
-                recordsTotal = 100,
+                //     data = new CustomerDataGenerator().GenerateCustomerList(queryString),
             };
 
             return Json(resp, JsonRequestBehavior.AllowGet);
@@ -46,7 +35,7 @@ namespace VdfFactoring.Controllers
                     Salary = i + 10.5,
                     Name = "My name is " + (i + 1),
                     Gender = "E",
-                     Id = i,
+                    Id = i,
                     BirthDate = DateTime.Now.AddDays(-1000 + i).ToShortDateString(),
                     ModifiedDate = DateTime.Now.AddDays(-2000 + i).ToShortDateString(),
                 };

@@ -25,7 +25,7 @@ namespace VdfFactoring
                 var list = HttpContext.Current.Session["customers"] as List<CustomerModel>;
 
                 var sessionList = Sort(list, queryString.orderedColumnName, orderType);
-             
+
                 return sessionList.Skip(queryString.start).Take(queryString.length).ToList();
             }
             var customerList = new List<CustomerModel>();
@@ -125,7 +125,7 @@ namespace VdfFactoring
             HttpContext.Current.Session["customers"] = customerList;
 
             var customerQuery = Sort(customerList, queryString.orderedColumnName, orderType);
-     
+
             return customerQuery.Skip(queryString.start).Take(queryString.length).ToList();
         }
 

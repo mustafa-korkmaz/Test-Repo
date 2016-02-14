@@ -32,12 +32,12 @@ namespace VdfFactoring.ViewModels
 
     }
 
-    public class SimplePersonViewModel
+    public class SimplePersonViewModel : IDataTablesJs
     {
-        [DataGridColumn("Ücret", DataFormat = ColumnDataFormat.Money, UseInSummary = true,Orderable = true)]
+        [DataGridColumn("Ücret", DataFormat = ColumnDataFormat.Money, UseInSummary = true, Orderable = true)]
         public double Salary { get; set; }
 
-        [DataGridColumn("İsim", DataFormat = ColumnDataFormat.Default,Orderable = true)]
+        [DataGridColumn("İsim", DataFormat = ColumnDataFormat.Default, Orderable = true)]
         public string Name { get; set; }
 
         [DataGridColumn("Cinsiyet")]
@@ -52,5 +52,13 @@ namespace VdfFactoring.ViewModels
         [DataGridColumn("Değitirme Tarihi", DataFormat = ColumnDataFormat.Date)]
         public string ModifiedDate { get; set; }
 
+        [DataGridColumn(Visible = false)]
+        public string DT_RowId
+        {
+            get
+            {
+                return this.Id.ToString();
+            }
+        }
     }
 }

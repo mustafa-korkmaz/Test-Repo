@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Common.Helpers;
 using Common.Attributes;
+using System;
 
 namespace Common.UIElements
 {
@@ -66,7 +67,7 @@ namespace Common.UIElements
             this.EditText = "Düzenle"; //edit column default text 
             this.DeleteText = "Sil";//delete column default text 
             this.EdittingRowDataLoadType = DataLoadType.AsPage; // default row data editing event type: AsPage (redirects a new page)
-            this.PagingType = PagingType.ClientSide; // default paging is ClientSide (we will use js)
+            //this.PagingType = PagingType.ClientSide; // default paging is ClientSide (we will use js)
             this.source = source;
             this.DataSource = source;// source and datatable are the same object by default
             this.SetDataGridColumnCollection();
@@ -81,32 +82,27 @@ namespace Common.UIElements
             //myDict[pi.Name] = pi.GetValue(item, null).ToString();
             //List<string> propertyList = source.GetType().GetProperties().Select(prop => prop.Name).ToList();
 
-            var obj = this.source;
             DataGridColumn c;
             this.Columns = new DataGridColumnCollection(this);
-            foreach (var item in obj)
-            {
-                int index = 0;
-                foreach (PropertyInfo pi in item.GetType().GetProperties())
-                {
-                    c = DataGridColumn.Create(pi.Name);
-                    var customAttributes = pi.GetCustomAttributes(true);
-                    var dataColumnAttribute = (customAttributes.Any() ? customAttributes[0] : null) as DataGridColumnAttribute;
-                    if (dataColumnAttribute != null)
-                    {
-                        c.DisplayName = dataColumnAttribute.DisplayName;
-                        c.DataFormat = dataColumnAttribute.DataFormat;
-                        c.DataType = dataColumnAttribute.DataType;
-                        c.Visible = dataColumnAttribute.Visible;
-                        c.Orderable = dataColumnAttribute.Orderable;
-                        c.UseInSummary = dataColumnAttribute.UseInSummary;
-                    }
-                    c.ColumnIndex = c.DisplayIndex = index++;
-                    this.Columns.Add(c);
-                }
-                break; // only 1 loop will be enough for columns
-            }
 
+            int index = 0;
+            foreach (PropertyInfo pi in source.GetType().GetGenericArguments()[0].GetProperties())
+            {
+                c = DataGridColumn.Create(pi.Name);
+                var customAttributes = pi.GetCustomAttributes(true);
+                var dataColumnAttribute = (customAttributes.Any() ? customAttributes[0] : null) as DataGridColumnAttribute;
+                if (dataColumnAttribute != null)
+                {
+                    c.DisplayName = dataColumnAttribute.DisplayName;
+                    c.DataFormat = dataColumnAttribute.DataFormat;
+                    c.DataType = dataColumnAttribute.DataType;
+                    c.Visible = dataColumnAttribute.Visible;
+                    c.Orderable = dataColumnAttribute.Orderable;
+                    c.UseInSummary = dataColumnAttribute.UseInSummary;
+                }
+                c.ColumnIndex = c.DisplayIndex = index++;
+                this.Columns.Add(c);
+            }
         }
 
         private void SetDataGridRowCollection()
