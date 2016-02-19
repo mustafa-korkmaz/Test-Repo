@@ -55,6 +55,9 @@ DataGrid.prototype.initialize = function () {
     }
 
     $(this.tableSelector).DataTable({
+        "oLanguage": {
+            "sProcessing": '<img src="' + ROOT_DIR + 'Content/assets/global/img/loading-spinner-grey.gif" align="">'
+        },
         "emptyTable": "No data available in table",
         "zeroRecords": "No matching records found",
         "bFilter": false, //remove search text box
@@ -117,7 +120,7 @@ jQuery(document).ready(function () {
 });
 
 function onActionsClicked(actionButton) {
-    
+
     var td_element = actionButton.closest('td');
 
     if ($(td_element).hasClass('link-button')) { // link button clicked- we will use this click event  in linkButton.js
